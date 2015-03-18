@@ -1,0 +1,124 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Editar entidad</h3>
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputCodigo">Codigo</label>
+					<input id="inputCodigo" type="text" class="form-control" placeholder="Codigo" ng-model="entidad.codigo" required autofocus />
+				</div>
+				<div class="form-group">
+					<label for="inputDenominacion">Denominacion</label>
+					<input id="inputDenominacion" type="text" class="form-control" placeholder="Denominacion" ng-model="entidad.denominacion" required />
+				</div>
+				<div class="checkbox">
+					<label for="inputEsPublico" >Publico/Privado</label>
+					<select id="inputEsPublico" class="form-control"
+								ng-model="entidad.esPublico" 
+							    ng-options="t.key as t.label for t in global.publicosPrivados"
+							    required>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="inputCodigoCalejero">CodigoCalejero</label>
+					<input id="inputCodigoCalejero" type="text" class="form-control" placeholder="CodigoCalejero" ng-model="entidad.codigoCalejero" />
+				</div>
+				<div class="form-group">
+					<label for="inputTipoVia">TipoVia</label>
+					<select id="inputTipoVia" class="form-control"
+								ng-model="entidad.tipoVia" 
+							    ng-options="t.key as t.label for t in global.tipoVias"
+							    required>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="inputNombreVia">NombreVia</label>
+					<input id="inputNombreVia" type="text" class="form-control" placeholder="NombreVia" ng-model="entidad.nombreVia" required />
+				</div>
+				<div class="form-group">
+					<label for="inputNumeroVia">NumeroVia</label>
+					<input id="inputNumeroVia" type="number" class="form-control" placeholder="NumeroVia" ng-model="entidad.numeroVia" />
+				</div>
+				<div class="form-group">
+					<label for="inputAccesorio">Accesorio</label>
+					<input id="inputAccesorio" type="text" class="form-control" placeholder="Accesorio" ng-model="entidad.accesorio" />
+				</div>
+				<div class="form-group">
+					<label for="inputBloque">Bloque</label>
+					<input id="inputBloque" type="number" class="form-control" placeholder="Bloque" ng-model="entidad.bloque" />
+				</div>
+				<div class="form-group">
+					<label for="inputEscalera">Escalera</label>
+					<input id="inputEscalera" type="number" class="form-control" placeholder="Escalera" ng-model="entidad.escalera" />
+				</div>
+				<div class="form-group">
+					<label for="inputPiso">Piso</label>
+					<input id="inputPiso" type="number" class="form-control" placeholder="Piso" ng-model="entidad.piso" />
+				</div>
+				<div class="form-group">
+					<label for="inputLetra">Letra</label>
+					<input id="inputLetra" type="text" class="form-control" placeholder="Letra" ng-model="entidad.letra" />
+				</div>
+				<div class="form-group">
+					<label for="inputCodigoPostal">CodigoPostal</label>
+					<input id="inputCodigoPostal" type="text" class="form-control" placeholder="CodigoPostal" ng-model="entidad.codigoPostal" required />
+				</div>
+				<div class="form-group">
+					<label for="inputLocalidadIne">LocalidadIne</label>
+					<autocomplete attr-input-id="inputLocalidadIne"
+						              ng-model="entidad.localidadIne" 
+									  dataprovider="localidadDataProvider"
+									  attr-class="width-autocomplete"
+									  attr-input-class="form-control"
+									  attr-placeholder="Localidad"
+						              required >
+					</autocomplete>
+				</div>
+				<div class="form-group">
+					<label for="inputMunicipioIne">MunicipioIne</label>
+					<autocomplete attr-input-id="inputMunicipioIne" 
+									  ng-model="entidad.municipioIne" 
+									  dataprovider="municipioDataProvider"
+									  attr-class="width-autocomplete"
+									  attr-input-class="form-control"
+									  attr-placeholder="Municipio"
+						              required >
+					</autocomplete>
+				</div>
+				<div class="form-group">
+					<label for="inputProvinciaIne">ProvinciaIne</label>
+					<select id="inputProvinciaIne" 
+								class="form-control"						
+								ng-model="entidad.provinciaIne" 
+							    ng-options="t.key as t.label for t in global.provincias"
+							    required>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="inputTelefono1">Telefono1</label>
+					<input id="inputTelefono1" type="text" class="form-control" placeholder="Telefono1" ng-model="entidad.telefono1" />
+				</div>
+				<div class="form-group">
+					<label for="inputTelefono2">Telefono2</label>
+					<input id="inputTelefono2" type="text" class="form-control" placeholder="Telefono2" ng-model="entidad.telefono2" />
+				</div>
+				<div class="form-group">
+					<label for="inputEmail">Email</label>
+					<input id="inputEmail" type="text" class="form-control" placeholder="Email" ng-model="entidad.email" />
+				</div>
+				<div class="form-group">
+					<label for="inputContacto">Contacto</label>
+					<input id="inputContacto" type="text" class="form-control" placeholder="Contacto" ng-model="entidad.contacto" />
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="save($event)" ng-disabled="editForm.$invalid" >Save</button>
+					<button class="btn" ng-click="cancel($event)" >Cancel</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

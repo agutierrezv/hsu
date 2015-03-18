@@ -1,0 +1,67 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Editar Plan Asistencial</h3>
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputCodigo">Código</label>
+					<input id="inputCodigo" type="text" class="form-control" placeholder="Codigo" ng-model="planAsistencial.codigo" required autofocus />
+				</div>
+				<div class="form-group">
+					<label for="inputDomicilioFamiliar">Domicilio Familiar</label>
+					<input id="inputDomicilioFamiliar" type="text" class="form-control" placeholder="DomicilioFamiliar" ng-model="planAsistencial.domicilioFamiliar" />
+				</div>
+				<!--
+				<div class="form-group">
+					<label for="inputCiudadanoId">CiudadanoId</label>
+					<input id="inputCiudadanoId" type="text" class="form-control" placeholder="CiudadanoId" ng-model="planAsistencial.ciudadanoId" />
+				</div>
+				-->
+				<div class="form-group">
+					<label for="inputIdentificacionCiudadano">Identificación</label>
+					<input id="inputIdentificacionCiudadano" type="text" class="form-control" placeholder="IdentificacionCiudadano" ng-model="planAsistencial.identificacionCiudadano" required />
+				</div>
+				<div class="form-group">
+					<label for="inputNombre">Nombre</label>
+					<input id="inputNombre" type="text" class="form-control" placeholder="Nombre" ng-model="planAsistencial.nombre" required />
+				</div>
+				<div class="form-group">
+					<label for="inputApellido1">1<sup>er</sup> apellido</label>
+					<input id="inputApellido1" type="text" class="form-control" placeholder="Apellido1" ng-model="planAsistencial.apellido1" required />
+				</div>
+				<div class="form-group">
+					<label for="inputApellido2">2º apellido</label>
+					<input id="inputApellido2" type="text" class="form-control" placeholder="Apellido2" ng-model="planAsistencial.apellido2" />
+				</div>
+				<div class="form-group">
+					<label for="inputFechaApertura">Fecha de apertura</label>
+					<date-selector id="inputFechaApertura" 
+				          		   placeholder="FechaApertura" 
+					       		   value="planAsistencial.fechaApertura"
+					       		   opts="" /> 
+				</div>
+				
+				<!--
+				<div class="form-group">
+					<label for="inputProfesionalId">ProfesionalId</label>
+					<input id="inputProfesionalId" type="text" class="form-control" placeholder="ProfesionalId" ng-model="planAsistencial.profesionalId" />
+				</div> 
+
+				-->
+
+				<div class="form-group">
+					<label for="inputProfesionalReferencia">Profesional de referencia</label>
+					<input id="inputProfesionalReferencia" type="text" class="form-control" placeholder="ProfesionalReferencia" ng-model="planAsistencial.profesionalReferencia" />
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="save($event)" ng-disabled="editForm.$invalid" >Guardar</button>
+					<button class="btn" ng-click="cancel($event)" >Cancelar</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

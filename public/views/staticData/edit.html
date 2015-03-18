@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Editar Dato maestro</h3>
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputType">Tipo</label>
+					<input id="inputType" type="text" class="form-control" placeholder="Tipo" ng-model="dataItem.type" required autofocus />
+				</div>
+				<div class="form-group">
+					<label for="inputCodigo">Código</label>
+					<input id="inputCodigo" type="text" class="form-control" placeholder="Código" ng-model="dataItem.key" required autofocus />
+				</div>
+				<div class="form-group">
+					<label for="inputDescripcion">Etiqueta</label>
+					<input id="inputDescripcion" type="text" class="form-control" placeholder="Etiqueta" ng-model="dataItem.label" />
+				</div>
+				<div class="form-group">
+					<label for="inputDescripcion">Descripción</label>
+					<input id="inputDescripcion" type="text" class="form-control" placeholder="Descripción" ng-model="dataItem.description" />
+				</div>
+				
+				<error-zone ng-model="errors"></error-zone>
+
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="save($event)" ng-disabled="editForm.$invalid" >Guardar</button>
+					<button class="btn" ng-click="cancel($event)" >Cancelar</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Cargando..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

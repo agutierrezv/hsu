@@ -1,0 +1,78 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Editar Servicio</h3>
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputCodigo">Código</label>
+					<input id="inputCodigo" type="text" class="form-control" placeholder="Codigo" ng-model="servicio.codigo" required autofocus />
+				</div>
+				<div class="form-group">
+					<label for="inputDescripcion">Descripción</label>
+					<input id="inputDescripcion" type="text" class="form-control" placeholder="Descripcion" ng-model="servicio.descripcion" />
+				</div>
+				<div class="form-group">
+					<label for="inputColectivo">Colectivo</label>
+					<select id="inputColectivo" class="form-control"
+								ng-model="servicio.colectivo" 
+							    ng-options="t.key as t.label for t in global.colectivos"
+							    required>
+						</select>
+					<input id="inputColectivo" type="text" class="form-control" placeholder="Colectivo" ng-model="servicio.colectivo" />
+				</div>
+				<div class="form-group">
+					<label for="inputCaracteristicas">Caracteristicas</label>
+					<input id="inputCaracteristicas" type="text" class="form-control" placeholder="Caracteristicas" ng-model="servicio.caracteristicas" />
+				</div>
+				<div class="form-group">
+					<label for="inputSolicitudDocumentacion">Solicitud Documentacion</label>
+					<input id="inputSolicitudDocumentacion" type="text" class="form-control" placeholder="SolicitudDocumentacion" ng-model="servicio.solicitudDocumentacion" />
+				</div>
+				<div class="form-group">
+					<label for="inputPlazoInicio">Plazo Inicio</label>
+					<date-selector id="inputPlazoInicio" 
+				          		   placeholder="PlazoInicio" 
+					       		   value="servicio.plazoInicio"
+					       		   opts="" /> 
+				</div>
+				<div class="form-group">
+					<label for="inputPlazoFin">Plazo Fin</label>
+					<date-selector id="inputPlazoFin" 
+				          		   placeholder="PlazoFin" 
+					       		   value="servicio.plazoFin"
+					       		   opts="" /> 
+				</div>
+				<div class="form-group">
+					<label for="inputLugarDePresentacion">Lugar de Presentacion</label>
+					<input id="inputLugarDePresentacion" type="text" class="form-control" placeholder="LugarDePresentacion" ng-model="servicio.lugarDePresentacion" />
+				</div>
+				<div class="form-group">
+					<label for="inputContacto">Contacto</label>
+					<input id="inputContacto" type="text" class="form-control" placeholder="Contacto" ng-model="servicio.contacto" />
+				</div>
+				<div class="checkbox">
+					<label for="inputInstanciaDeParte" >
+						<input id="inputInstanciaDeParte" type="checkbox" ng-model="servicio.instanciaDeParte" />
+						¿Es instancia de parte?
+					</label>
+				</div>
+
+				<div class="checkbox">
+					<label for="inputAsignacionDirecta" >
+						<input id="inputAsignacionDirecta" type="checkbox" ng-model="servicio.asignacionDirecta" />
+						¿Asignación directa?
+					</label>
+				</div>
+
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="save($event)" ng-disabled="editForm.$invalid" >Guardar</button>
+					<button class="btn" ng-click="cancel($event)" >Cancelar</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

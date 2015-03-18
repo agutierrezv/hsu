@@ -1,0 +1,59 @@
+<div class="header2">
+	<h3>Miembros de la Unidad familiar</h3>
+	<hr class="topRule" />
+</div>
+
+<div class="row czContent">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<h3>Familia {{familia.nombreFamilia}}</h3>
+		<div class="czLabel">Domicilio:</div>
+		<div class="czContent" address-display ng-model="familia.direccion"></div><br/>
+		<div class="czLabel">Teléfono:</div>
+		<div class="czContent" phone-display ng-model="familia.telefono"></div><br/>
+		
+		<br/>
+		<br/>
+		
+		<h4>Miembros</h4>
+
+		<table class="miembrosTable table">
+			<thead>
+				<th class="col-md-3">Rol</th>
+				<th class="col-md-5">Nombre</th>
+				<th class="col-md-2">Sexo</th>
+				<th class="col-md-2 text-center">Edad</th>
+				<th class="col-md-2"> </th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="miembro in miembrosFamilia" ng-class-odd="'oddRow'">
+					<td class="familia-l">
+						<select id="parentesco{{miembro._id}}" 
+								class="form-control" 
+								ng-model="miembro.parentesco"
+								ng-options="p.key as p.label for p in global.parentescos"
+								ng-change="changeParentesco(miembro)">
+						</select>
+					</td>
+					<td class="familia-l">
+						{{miembro.ciudadano.nombre}} {{miembro.ciudadano.apellido1}}  {{miembro.ciudadano.apellido2}}  
+					</td>
+					<td class="familia-l">
+							{{miembro.ciudadano.sexo | sexo}}
+					</td>
+					<td class="familia-r">
+							{{miembro.ciudadano.fechaNacimiento | edad }}
+					</td>
+					<td class="familia-r">
+						<a ng-click="removeMiembro(miembro)"><span class="glyphicon glyphicon-remove red" tooltip="Eliminar miembro"></span></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="row text-left">
+			<button name="addMiembro" class="czAction" ng-click="addMiembro()"><span class="glyphicon glyphicon-plus"></span> Añadir miembro</button>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>

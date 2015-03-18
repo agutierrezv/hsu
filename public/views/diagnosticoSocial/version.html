@@ -1,0 +1,135 @@
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<h3 class="text-center">Diagnóstico Social</h3>		
+
+		<div class="row">
+			<div class="col-md-8 text-left">
+				<span for="familia" class="flabel">Familia:</span>
+				<span>{{familia.nombreFamilia}} {{familia.direccion || '(no asignado)'}}</span>
+			</div>
+			<div class="col-md-4 text-right">
+				<a ng-click="gotoOtrasVersiones()">Ver otras versiones</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-8 text-left">
+					<span class="flabel">Profesional:</span>
+					<span>{{profesionalReferencia || '(no asignado)'}}</span>
+			</div>
+			<div class="col-md-4 text-right">
+				<button class="btn btn-primary pull-right" 
+						tooltip="Selecionar profesional" 
+					    ng-click="seleccionarProfesional()"
+					    ng-hide="readonly"
+					    >
+					    <span class="glyphicon glyphicon-search"></span>
+				</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="text-left ifield">
+					<label for="version" class="flabel">Fecha:</label>
+					<span id="version">{{diagnostico.version | date:'dd/MM/yyyy' }}</span> 
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="text-right ifield">
+					<label for="estado" class="flabel">Estado:</label>
+					<span id="estado">{{diagnostico.estado}}</span> 					
+				</div>
+			</div>
+		</div>
+
+	
+
+		<error-zone ng-model="errors"></error-zone> 
+
+		<div>
+			<ol class="list-group">
+				<li class="list-group-item li-hover" ng-click="gotoForm1()">
+					1. Información
+					<valoracion-display ng-model="diagnosticoDto.f1" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm2()">
+					2. Habilidades sociales
+					<valoracion-display ng-model="diagnosticoDto.f2" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm3()">
+					3. Autonomía psíquica/física
+					<valoracion-display ng-model="diagnosticoDto.f3" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm4()">
+					4. Relación convivencial
+					<valoracion-display ng-model="diagnosticoDto.f4" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm5()">
+					5. Organización unidad convivencial
+					<valoracion-display ng-model="diagnosticoDto.f5" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm6()">
+					6. Recursos económicos
+					<valoracion-display ng-model="diagnosticoDto.f6" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm7()">
+					7. Trabajo/ocupación
+					<valoracion-display ng-model="diagnosticoDto.f7" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm8()">
+					8. Formación/Educación
+					<valoracion-display ng-model="diagnosticoDto.f8" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm9()">
+					9. Vivienda
+					<valoracion-display ng-model="diagnosticoDto.f9" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm10()">
+					10. Participación social
+					<valoracion-display ng-model="diagnosticoDto.f10" class="pull-right"/>
+				</li>
+				<li class="list-group-item li-hover" ng-click="gotoForm11()">
+					11. Aceptación social
+					<valoracion-display ng-model="diagnosticoDto.f11" class="pull-right"/>
+				</li>
+			</ol>
+
+			<!--
+			<ul class="list-group">
+				<li class="list-group-item">
+					<span>Resumen</span>
+					<valoracion-display ng-model="diagnostico.valoracion" class="pull-right"/>
+				</li>
+			</ul>
+			-->
+
+			<div class="input-group">
+				<span class="input-group-addon">Diagnóstico:</span>
+				<input id="diagnostico" type="text" class="form-control text-right" ng-model="diagnostico.valoracion" readonly>					
+				</input>
+			</div>
+			<br/>
+
+			
+			<div class="input-group">
+				<span class="input-group-addon">Observaciones:</span>
+				<textarea id="obs" type="text"  class="form-control" rows="3" 
+				          ng-model="diagnostico.observaciones"
+				          ng-change="changedObservaciones()"
+				          ng-readonly="estaCerrado()">
+				</textarea>
+			</div>
+			<br/>
+
+		</div>
+
+		<div class="text-left" ng-show="puedeCerrarse()">
+			<button class="btn btn-primary" ng-click="cerrar()">Cerrar diagnóstico</button> 
+			<small>(Cerrar impide cambios posteriores)</small>
+		</div>
+
+	</div>
+	<div class="col-md-3"></div>
+</div>

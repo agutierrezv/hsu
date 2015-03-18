@@ -1,0 +1,119 @@
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="badge badge-form-no">6/11</div>
+		<h3 class="text-center">6. Recursos Económicos</h3>		
+
+		<div ng-include src="navigationTemplate"></div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="text-left ifield">
+					<span for="familia" class="flabel">Familia:</span>
+					<span>{{familia.nombreFamilia}} {{familia.direccion}}</span>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="text-right ifield">
+					<div for="inputFecha" class="flabel">Fecha:</div>
+					<span>{{diagnostico.version | date:'dd/MM/yyyy'}}</span> 
+				</div>
+			</div>
+		</div>
+
+		<error-zone ng-model="errors"></error-zone>
+
+		<p><strong>Instrucciones:</strong> Indique el nº de miembros de la unidad familiar y la suma total de ingresos de la misma.</p>
+
+		<form>
+			<table class="form-table">
+				<thead>
+					<th class="col-md-9">Pregunta</th>
+					<th class="col-md-3">Valoración</th>						
+				</thead>
+				<tbody>
+					<tr>
+						<td class="form-question">
+							Nº de miembros de la unidad familiar:
+						</td>
+						<td class="form-qinput-l">
+							<input ng-show="!readonly" id="numeroMiembros" type="number" value="1" min="1" max="5" step="1" ng-model="form.q[0]"/>
+							<span ng-show="readonly && form.q[0]">{{form.q[0]}}</span> miembros
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							Ingresos de la unidad convivencial (suma total aportada por todos sus miembros):
+						</td>
+						<td class="form-qinput-l">
+							<input ng-show="!readonly" type="number" min="0" step="0.01" ng-model="form.q[1]"/>
+							<span ng-show="readonly && form.q[1]">{{form.q[1]}}</span> &euro;
+						</td>
+					</tr>
+				
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="form-summary">Valoración:</td>
+						<td class="form-qinput-summary text-center">
+							<valoracion-display ng-model="form.valoracion"/>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+
+		<div class="panel panel-default leyenda">
+			<div class="panel-heading" ng-click="showLeyend=!showLeyend">Leyenda <span class="pull-right glyphicon glyphicon-asterisk"></span></div>
+			<div class="panel-body" ng-class="{'leyend-expanded': showLeyend, 'leyend-collapsed': !showLeyend}">
+				<p>La valoración se realiza en base a la cantidad de ingresos familiares respecto al número de miembros que la componen con los criterios expresados en la siguiente tabla:</p>
+				<table class="table">
+					<thead>
+						<th class="col-md-3">Nº de miembros</th>
+						<th class="col-md-3"><valoracion-display ng-model="leyenda.md"/></th>
+						<th class="col-md-3"><valoracion-display ng-model="leyenda.d"/></th>
+						<th class="col-md-3"><valoracion-display ng-model="leyenda.a"/></th>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>1</code> miembro</td>
+							<td>hasta <code>5.952,98€</code></td>
+							<td>desde <code>5.952,99€</code> hasta <code>7.738,90€</code></td>
+							<td>a partir de <code>7.738,91€</code></td>
+						</tr>
+						<tr>
+							<td><code>2</code> miembros</td>
+							<td>hasta <code>6.786,40€</code></td>
+							<td>desde <code>6.786,41€</code> hasta <code>8.572,32€</code></td>
+							<td>a partir de <code>8.572,32€</code></td>
+						</tr>
+						<tr>
+							<td><code>3</code> miembros</td>
+							<td>hasta <code>7.619,82€</code></td>
+							<td>desde <code>7.219,83€</code> hasta <code>9.405,74€</code></td>
+							<td>a partir de <code>9.405,75€</code></td>
+						</tr>
+						<tr>
+							<td><code>4</code> miembros</td>
+							<td>hasta <code>8.453,24€</code></td>
+							<td>desde <code>8.453,25€</code> hasta <code>10.239,16€</code></td>
+							<td>a partir de <code>10.239,17€</code></td>
+						</tr>
+						<tr>
+							<td><code>5</code> o más miembros</td>
+							<td>hasta <code>9.286,66€</code></td>
+							<td>desde <code>9.286,67€</code> hasta <code>11.072,58€</code></td>
+							<td>a partir de <code>11.072,59€</code></td>
+						</tr>
+					</tbody>
+				</table>
+		    	
+			</div>
+		</div>
+
+		<div ng-include src="navigationTemplate"></div>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>

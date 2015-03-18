@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Editar Punto georeferenciado</h3>
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputNombre">Nombre</label>
+					<input id="inputNombre" type="text" class="form-control" placeholder="Nombre" ng-model="geoPoint.nombre" required autofocus />
+				</div>
+				<div class="form-group">
+					<label for="inputDescripcion">Descripción</label>
+					<input id="inputDescripcion" type="text" class="form-control" placeholder="Descripcion" ng-model="geoPoint.descripcion" />
+				</div>
+				<div class="form-group">
+					<label for="inputTipo">Tipo</label>
+					<input id="inputTipo" type="text" class="form-control" placeholder="Tipo" ng-model="geoPoint.tipo" />
+				</div>
+				<div class="form-group">
+					<label for="inputLongitud">Longitud</label>
+					<input id="inputLongitud" type="number" class="form-control" placeholder="Longitud" ng-model="geoPoint.longitud" required />
+				</div>
+				<div class="form-group">
+					<label for="inputLatitud">Latitud</label>
+					<input id="inputLatitud" type="number" class="form-control" placeholder="Latitud" ng-model="geoPoint.latitud" required />
+				</div>
+				<div class="form-group">
+					<label for="inputMedicion">Medicion</label>
+					<input id="inputMedicion" type="text" class="form-control" placeholder="Medicion" ng-model="geoPoint.medicion" />
+				</div>
+				<div class="form-group">
+					<label for="inputValor">Valor</label>
+					<input id="inputValor" type="number" class="form-control" placeholder="Valor" ng-model="geoPoint.valor" />
+				</div>
+				<div class="form-group">
+					<label for="inputUnidad">Unidad</label>
+					<input id="inputUnidad" type="text" class="form-control" placeholder="Unidad" ng-model="geoPoint.unidad" />
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="save($event)" ng-disabled="editForm.$invalid" >Save</button>
+					<button class="btn" ng-click="cancel($event)" >Cancel</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

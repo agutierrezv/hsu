@@ -1,0 +1,2 @@
+--reporter mocha-teamcity-cov-reporter
+--recursive

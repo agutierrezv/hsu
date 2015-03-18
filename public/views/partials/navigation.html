@@ -1,0 +1,20 @@
+<div class="row form-navigation-bar">
+	<div class="col-xs-4">
+		<button ng-show="canGotoPrevious()" class="btn btn-primary" ng-click="gotoPrevious()">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp; 
+			Previo
+		</button>
+	</div>
+	<div class="col-xs-4 text-center">
+		<button class="btn btn-primary" ng-click="gotoUp()">
+			<span class="glyphicon glyphicon-list-alt"></span>&nbsp; 
+			Resumen
+		</button>
+	</div>
+	<div class="col-xs-4 text-right">
+		<button ng-show="canGotoNext()" class="btn btn-primary" ng-click="gotoNext()">
+			Siguiente 
+			&nbsp;<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<h3>Historia Social Única</h3>
+		<p>Prueba de concepto: Historia Social Única, por Ayesa.</p>
+		<p>Acceso para {{role.name}}.</p>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<button class="big-icon" ng-click="gotoCiudadanos()" ng-show="role.key != 'CIU'">
+					<image src="/images/home-ciudadano.png" aria-hidden="true"/><br/>
+					Usuarios
+				</button>
+				<button class="big-icon" ng-click="gotoFamilias()" ng-show="role.key != 'CIU'">
+					<image src="/images/home-familias.png" aria-hidden="true"/><br/>
+					Familias
+				</button>
+				<button class="big-icon" ng-click="gotoDiagnosticoSocial()" ng-show="role.key != 'CIU'">
+					<image src="/images/home-diagSocial.png" aria-hidden="true"/><br/>
+					Diagnóstico Social
+				</button>
+				<button class="big-icon" ng-click="gotoPas()">
+					<image src="/images/home-PAS.png" aria-hidden="true"/><br/>
+					PAS
+				</button>
+				<button class="big-icon" ng-click="gotoProfesionales()" ng-show="role.key != 'CIU'">
+					<image src="/images/home-pro.png" aria-hidden="true"/><br/>
+					Profesionales
+				</button>
+				<button class="big-icon" ng-click="gotoPrestaciones()">
+					<image src="/images/home-servicios.png" aria-hidden="true"/><br/>
+					Cartera de servicios
+				</button>
+				<button class="big-icon" ng-click="gotoInformes()" ng-show="role.key != 'CIU'">
+					<image src="/images/home-informes.png" aria-hidden="true"/><br/>
+					Informes
+				</button>
+				<button class="big-icon" ng-click="gotoRecursos()">
+					<image src="/images/home-recursos.png" aria-hidden="true"/><br/>
+					Recursos
+				</button>
+				<button class="big-icon" ng-click="gotoAppMovil()" ng-show="role.key != 'CIU'">
+					<image src="/images/mobileApp.png" aria-hidden="true"/><br/>
+					App Móvil
+				</button>
+				<button class="big-icon" ng-click="gotoAdmin()" ng-show="role.key == 'ADM'">
+					<image src="/images/home-admin.png" aria-hidden="true"/><br/>
+					Administración
+				</button>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

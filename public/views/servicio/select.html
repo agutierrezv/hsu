@@ -1,0 +1,95 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+				</td>
+				<td class="text-center">
+					<h3><span>Seleccione una Prestación</span></h3>
+				</td>
+				<td class="text-right">
+				  <a class="iconBig" href ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="upperTableZone">
+			<div class="searchZone">
+				<input id="searchTextbox" type="string" data-ng-model="searchText" data-ng-change="refresh()" placeholder="criterio de selección">
+				<button class="btn btn-sm" data-ng-click="clearSearch()" data-ng-hide="searchText=='' || searchText==null">Limpiar</button>
+			</div>
+			<div class="foundZone">
+				<span data-ng-show="totalItems>0">{{totalItems}} encontrados.</span>
+				<span data-ng-show="totalItems==1">Uno encontrado.</span>
+				<span data-ng-show="totalItems==0">Sin elementos encontrados.</span>
+			</div>
+		</div>
+
+		<table id="itemList" class="data-tabe table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+				</th>	
+				<th>Codigo</th>
+				<th>Descripcion</th>
+				<th>Colectivo</th>
+				<!-- <th>Caracteristicas</th> -->
+				<!-- <th>Documentación necesaria</th> -->
+				<th>Plazo de presentación</th>
+				<!-- <th>Plazo finaliza</th> -->
+				<th>Presentación en</th>
+				<th>Contacto</th>
+				<th>Asignación directa</th>
+				<!-- <th>Instancia de parte</th>  -->
+				
+			
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="servicio in dataList">
+					<td><a href ng-click="select(servicio)"><span class="glyphicon glyphicon-search" tooltip="Seleccionar"></a></td>		
+					<td class="data">{{servicio.codigo}}</td>
+					<td class="data">{{servicio.descripcion}}</td>
+					<td class="data">{{servicio.colectivo}}</td>
+					<!-- <td class="data">{{servicio.caracteristicas}}</td> -->
+					<!-- <td class="data">{{servicio.solicitudDocumentacion}}</td>  -->
+					<td class="data">
+						<span ng-if="servicio.plazoInicio != null">{{servicio.plazoInicio | date:'yyyy.MM.dd'}} al {{servicio.plazoFin | date:'yyyy.MM.dd'}}</span>
+						<span ng-if="servicio.plazoInicio == null">sin plazos</span>
+					</td>
+					<td class="data">{{servicio.lugarDePresentacion }}</td>
+					<td class="data">{{servicio.contacto }}</td>
+					<td class="data">{{servicio.asignacionDirecta | checkmark }}</td>
+					<!-- <td class="data"><span ng-bind-html-unsafe="servicio.lugarDePresentacion | address">a</span></td>
+					<td class="data"><span ng-bind-html-unsafe="servicio.contacto | url">b</span></td> -->
+					<!-- <td class="data">{{servicio.instanciaDeParte}}</td>  -->
+					
+					<td><a href ng-click="select(servicio)"><span class="glyphicon glyphicon-search" tooltip="Seleccionar"></a></td>
+				</tr>
+			</tbody>
+		</table>			
+		
+		<div ng-show="dataReceived" class="text-center">
+			<!--<div style="display: inline; vertical-align: middle;">
+				<label for="pageSize">Page Size: </label>
+				<select id="pageSize" data-ng-model="pageSize">
+					<option>10</option>
+					<option>20</option>
+					<option>50</option>
+					<option>100</option>
+				</select>
+			</div> -->
+			<div>
+				<pagination max-size="10" boundary-links="true" 
+				            total-items="totalItems" items-per-page="pageSize" data-ng-model="currentPage" 
+							data-ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+				</pagination>
+			</div>
+		</div>			
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="Loading..." />
+		</div>
+
+	</div>
+</div>

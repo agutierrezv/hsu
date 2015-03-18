@@ -1,0 +1,86 @@
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<form class="form-inline text-left" name="editForm" readonly>
+			<h3 class="text-center">Profesional</h3>
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputCodigo">Código</label> 
+					<div>{{profesional.codigo}}</div>
+				</div>
+
+				<br/>
+
+				<div class="form-group">
+					<label for="inputIdentificador">Identificador</label>
+					<div>{{profesional.tipoIndentificador}} {{profesional.identificador}}</div>
+				</div>
+				<div class="form-group">
+					<label for="inputNombre">Nombre</label>
+					<div>{{profesional.prefijo}} {{profesional.nombre}} {{profesional.apellido1}} {{profesional.apellido2}}</div>
+				</div>
+
+				<br/>
+
+				<div class="form-group">
+					<label for="inputTelefono">Teléfono</label>
+					<div>{{profesional.telefono}}</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail">Correo-e</label>
+					<div>{{profesional.email}}</div>
+				</div>
+				<div class="form-group">
+					<label for="inputTipologia">Tipología</label>
+					<div>{{profesional.tipologia}}</div>
+				</div>
+				<div class="form-group">
+					<label for="inputSector">Sector</label>
+					<div>{{profesional.sector}}</div>
+				</div>
+
+				<br/>
+
+				<div class="checkbox">
+					<label for="inputEsPublico" >
+						<input id="inputEsPublico" type="checkbox" ng-model="profesional.esPublico" readonly/>
+						¿Público?
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="inputAcreditado" >
+						<input id="inputAcreditado" type="checkbox" ng-model="profesional.acreditado" readonly />
+						¿Acreditado?
+					</label>
+				</div>
+
+				<br/>
+				<br/>
+
+				<div class="form-group">
+					<label for="inputAmbitoGeografico">Ámbito geografico</label>
+					<div>{{profesional.ambitoGeografico}}</div>
+				</div>
+				<div class="form-group">
+					<label for="inputNivel">Nivel</label>
+					<div>{{profesional.nivel}}</div>
+				</div>
+				<div class="form-group">
+					<label for="inputPerfil">Perfil</label>
+					<div>{{profesional.perfil}}</div>
+				</div>
+
+				<br/>
+				<br/>
+
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="cancel($event)" >Volver</button>
+					<button class="btn btn-primary" ng-click="edit($event)" >Editar</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Cargando..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>

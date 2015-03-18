@@ -1,0 +1,263 @@
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="badge badge-form-no">4/11</div>
+		<h3 class="text-center">4. Relación convivencial</h3>		
+
+		<div ng-include src="navigationTemplate"></div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="text-left ifield">
+					<span for="familia" class="flabel">Familia:</span>
+					<span>{{familia.nombreFamilia}} {{familia.direccion}}</span>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="text-right ifield">
+					<div for="inputFecha" class="flabel">Fecha:</div>
+					<span>{{diagnostico.version | date:'dd/MM/yyyy'}}</span> 
+				</div>
+			</div>
+		</div>
+
+		<error-zone ng-model="errors"></error-zone>
+
+		<p><strong>Instrucciones:</strong> Señale la situación o situaciones (si aplica más de una) que más se ajusta a la persona.</p>
+
+		<form>
+			<table class="form-table">
+				<thead>
+					<th class="col-md-9">Pregunta</th>
+					<th class="col-md-3">Valoración</th>						
+				</thead>
+				<tbody>
+					<tr>
+						<td class="form-question">
+							1. Situación convivencial adecuada.
+						</td>
+						<td class="form-qinput" ng-class="{'resp-ok': form.q[0]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[0]"/>
+							<span ng-show="readonly && form.q[0]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							2. Persona sola con/sin familia.
+						</td>
+						<td class="form-qinput" ng-class="{'resp-ok': form.q[1]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[1]"/>
+							<span ng-show="readonly && form.q[1]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							3. Persona sola sin relaciones familiares.
+						</td>
+						<td class="form-qinput" ng-class="{'resp-ok': form.q[2]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[2]"/>
+							<span ng-show="readonly && form.q[2]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							4. Unidad convivencial en conflicto relacional entre adultos, intergeneracional entre hijos, entre vecinos, si se manifiesta habitualmente algunos de los siguientes comportamientos:
+							<ul>
+								<li>Discusiones frecuentes con agresividad</li>
+								<li>Rechazo o pasividad hacia algún miembro</li>
+								<li>Falta de respeto</li>
+								<li>Imposibilidad o grave dificultad de dialogo</li>
+								<li>Conductas autoritarias</li>
+								<li>Duplicidad de ordenes</li>
+								<li>Laxitud de disciplina</li>
+								<li>Utilización del menor en conflictos de pareja</li>
+								<li>Abandono, fuga o expulsión del hogar del adulto, menor o joven</li>
+								<li>Conflicto de roles</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[3]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[3]"/>
+							<span ng-show="readonly && form.q[3]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							5. Conflicto relacional con familia extensa:
+							<ul>
+								<li>Se han roto las relaciones</li>
+								<li>Son conflictivas</li>
+								<li>Son de manipulación</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[4]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[4]"/>
+							<span ng-show="readonly && form.q[4]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							6. Unidad convivencial incompleta por:
+							<ul>
+								<li>Inexistencia o ausencia de miembros</li>
+								<li>Institucionalización</li>
+								<li>Hospitalización</li>
+								<li>Privación de libertad</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[5]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[5]"/>
+							<span ng-show="readonly && form.q[5]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							7. Unidad Convivencial en situación de separación temporal con repercusión en
+cuidados y protección por:
+							<ul>
+								<li>Trabajo</li>
+								<li>Continuos viajes</li>
+								<li>Enfermedad</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[6]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[6]"/>
+							<span ng-show="readonly && form.q[6]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							8. Maltrato físico:
+							<ul>
+								<li>Prenatal: Abuso de alcohol, drogas</li>
+								<li>Daños físicos, golpes, quemaduras</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[7]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[7]"/>
+							<span ng-show="readonly && form.q[7]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							9. Abandono físico:
+							<ul>
+								<li>En alimentación, vestido o sueño</li>
+								<li>Hábitos de higiene</li>
+								<li>Cuidados médicos, vigilancia y control</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[8]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[8]"/>
+							<span ng-show="readonly && form.q[8]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							10. Maltrato emocional:
+							<ul>
+								<li>Rechazo afectivo, aislamiento, incomunicación</li>
+								<li>Comunicación verbal a través de burlas, desprecio</li>
+								<li>Amenazas de abandono o expulsión</li>
+								<li>Amenaza contra la seguridad e integridad personal</li>
+								<li>Descontrol parental de emociones</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[9]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[9]"/>
+							<span ng-show="readonly && form.q[9]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							11. Abandono emocional:
+							<ul>
+								<li>Falta de respuesta a necesidades afectivas</li>
+								<li>Incomunicación activa en la relación</li>
+								<li>Sentimiento de culpabilidad</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[10]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[10]"/>
+							<span ng-show="readonly && form.q[10]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							12. Abuso sexual:
+							<ul>
+								<li>Incesto</li>
+								<li>Violación</li>
+								<li>Vejación sexual</li>
+								<li>Exhibicionismo</li>
+								<li>Abuso de autoridad para conseguir placer</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[11]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[11]"/>
+							<span ng-show="readonly && form.q[11]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							13. Corrupción de menores:
+							<ul>
+								<li>Exposición cotidiana a hábitos de alcoholismo, drogas, prostitución</li>
+								<li>Delincuencia</li>
+								<li>Proxenetismo</li>
+								<li>Extorsión</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[12]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[12]"/>
+							<span ng-show="readonly && form.q[12]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							14. Haber sufrido el sujeto en su historial personal:
+							<ul>
+								<li>Maltrato físico</li>
+								<li>Abandono físico</li>
+								<li>Maltrato Emocional</li>
+								<li>Abuso Sexual</li>
+								<li>Corrupción de menores</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[13]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[13]"/>
+							<span ng-show="readonly && form.q[13]">&cross;</span>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="form-summary">Valoración:</td>
+						<td class="form-qinput-summary text-center">
+							<valoracion-display ng-model="form.valoracion"/>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+
+		<div class="panel panel-default leyenda">
+			<div class="panel-heading" ng-click="showLeyend=!showLeyend">Leyenda <span class="pull-right glyphicon glyphicon-asterisk"></span></div>
+			<div class="panel-body" ng-class="{'leyend-expanded': showLeyend, 'leyend-collapsed': !showLeyend}">
+				<p>Señale la situación que mas se ajuste a la persona.</p>
+		    	<dl>
+		    		<dt class="leyenda-green"><valoracion-display ng-model="leyenda.a"/></dt><dd>1<sup>er</sup>, 2<sup>o</sup> o 3<sup>er</sup> indicador.</dd>
+		    		<dt class="leyenda-orange"><valoracion-display ng-model="leyenda.d"/></dt><dd>4<sup>o</sup>, 5<sup>o</sup>, 6<sup>o</sup>, 7<sup>o</sup> o 14<sup>o</sup> indicador.</dd>
+		    		<br/>		    		
+		    		<br/>
+
+		    		<dt class="leyenda-red"><valoracion-display ng-model="leyenda.md"/></dt><dd>8<sup>o</sup>, 9<sup>o</sup>, 10<sup>o</sup>, 11<sup>o</sup>, 12<sup>o</sup> o 13<sup>er</sup> indicadicador o más de dos indicadores.</dd>
+		    	</dl>
+			</div>
+		</div>
+
+		<div ng-include src="navigationTemplate"></div>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>

@@ -1,0 +1,91 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Editar profesional</h3>
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputCodigo">Código</label>
+					<input id="inputCodigo" type="text" class="form-control" placeholder="Codigo" ng-model="profesional.codigo" required autofocus />
+				</div>
+				<div class="form-group">
+					<label for="inputTipoIndentificador">Tipo de identificador</label>
+					<select id="inputTipoIdentificador" class="form-control"
+								placeholder="Tipo de identificador"
+								ng-model="profesional.tipoIdentificador" 
+							    ng-options="t.key as t.label for t in global.tipoIdentificadores"
+							    required>
+						</select>
+				</div>
+				<div class="form-group">
+					<label for="inputIdentificador">Identificador</label>
+					<input id="inputIdentificador" type="text" class="form-control" placeholder="Identificador" ng-model="profesional.identificador" required />
+				</div>
+				<div class="form-group">
+					<label for="inputPrefijo">Prefijo</label>
+					<input id="inputPrefijo" type="text" class="form-control" placeholder="Prefijo" ng-model="profesional.prefijo" />
+				</div>
+				<div class="form-group">
+					<label for="inputNombre">Nombre</label>
+					<input id="inputNombre" type="text" class="form-control" placeholder="Nombre" ng-model="profesional.nombre" required />
+				</div>
+				<div class="form-group">
+					<label for="inputApellido1">1<sup>er</sup> apellido</label>
+					<input id="inputApellido1" type="text" class="form-control" placeholder="Apellido" ng-model="profesional.apellido1" required />
+				</div>
+				<div class="form-group">
+					<label for="inputApellido2">2º apellido</label>
+					<input id="inputApellido2" type="text" class="form-control" placeholder="2º apellido" ng-model="profesional.apellido2" />
+				</div>
+				<div class="form-group">
+					<label for="inputTelefono">Teléfono</label>
+					<input id="inputTelefono" type="text" class="form-control" placeholder="Teléfono" ng-model="profesional.telefono" />
+				</div>
+				<div class="form-group">
+					<label for="inputEmail">Correo-e</label>
+					<input id="inputEmail" type="text" class="form-control" placeholder="Correo-e" ng-model="profesional.email" />
+				</div>
+				<div class="form-group">
+					<label for="inputTipologia">Tipología</label>
+					<input id="inputTipologia" type="text" class="form-control" placeholder="Tipología" ng-model="profesional.tipologia" />
+				</div>
+				<div class="form-group">
+					<label for="inputSector">Sector</label>
+					<input id="inputSector" type="text" class="form-control" placeholder="Sector" ng-model="profesional.sector" />
+				</div>
+				<div class="checkbox">
+					<label for="inputEsPublico" >Publico/Privado</label>
+					<select id="inputEsPublico" class="form-control"
+								ng-model="profesional.esPublico" 
+							    ng-options="t.key as t.label for t in global.publicosPrivados">
+					</select>
+				</div>
+				<div class="checkbox">
+					<label for="inputAcreditado" >
+						<input id="inputAcreditado" type="checkbox" ng-model="profesional.acreditado" />
+						¿Está acreditado?
+					</label>
+				</div>
+				<div class="form-group">
+					<label for="inputAmbitoGeografico">Ámbito Geografico</label>
+					<input id="inputAmbitoGeografico" type="text" class="form-control" placeholder="AmbitoGeografico" ng-model="profesional.ambitoGeografico" />
+				</div>
+				<div class="form-group">
+					<label for="inputNivel">Nivel</label>
+					<input id="inputNivel" type="text" class="form-control" placeholder="Nivel" ng-model="profesional.nivel" />
+				</div>
+				<div class="form-group">
+					<label for="inputPerfil">Perfil</label>
+					<input id="inputPerfil" type="text" class="form-control" placeholder="Perfil" ng-model="profesional.perfil" />
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="save($event)" ng-disabled="editForm.$invalid" >Guardar</button>
+					<button class="btn" ng-click="cancel($event)" >Cancelar</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Cargando..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

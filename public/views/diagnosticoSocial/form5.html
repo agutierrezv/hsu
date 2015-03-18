@@ -1,0 +1,155 @@
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="badge badge-form-no">5/11</div>
+		<h3 class="text-center">5. Organización de la Unidad Convivencial</h3>		
+
+		<div ng-include src="navigationTemplate"></div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="text-left ifield">
+					<span for="familia" class="flabel">Familia:</span>
+					<span>{{familia.nombreFamilia}} {{familia.direccion}}</span>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="text-right ifield">
+					<div for="inputFecha" class="flabel">Fecha:</div>
+					<span>{{diagnostico.version | date:'dd/MM/yyyy'}}</span> 
+				</div>
+			</div>
+		</div>
+
+		<error-zone ng-model="errors"></error-zone>
+
+		<p><strong>Instrucciones:</strong> Señale la situación o situaciones (si aplica más de una) que más se ajusta a la persona.</p>
+
+		<form>
+			<table class="form-table">
+				<thead>
+					<th class="col-md-9">Pregunta</th>
+					<th class="col-md-3">Valoración</th>						
+				</thead>
+				<tbody>
+					<tr>
+						<td class="form-question">
+							1. Alimentación:
+							<ul>
+								<li>Escasa o pobre</li>
+								<li>Inadecuada por edad o enfermedad</li>
+								<li>Desorganización en horarios</li>
+								<li>Sin variedad</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[0]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[0]"/>
+							<span ng-show="readonly && form.q[0]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							2. Higiene familiar y del hábitat:
+							<ul>
+								<li>Suciedad en ropa y cuerpo</li>
+								<li>Aspecto general descuidado</li>
+								<li>Acumulación de suciedad en el hogar</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[1]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[1]"/>
+							<span ng-show="readonly && form.q[1]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							3. Administración económica:
+							<ul>
+								<li>El presupuesto se gasta inadecuadamente</li>
+								<li>No se llega a fin de mes</li>
+								<li>No se cubren las necesidades básicas</li>
+								<li>Se gasta en bienes no básicos</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[2]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[2]"/>
+							<span ng-show="readonly && form.q[2]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							4. Reparto de tareas en administración económica:
+							<ul>
+								<li>Se excluye de estas responsabilidades a miembros que deben participar en la administración presupuestaria</li>
+								<li>Existe abuso de poder en el manejo del presupuesto familiar</li>
+								<li>Los responsables idóneos en la administración han sido sustituidos por su manifiesta incompetencia</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[3]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[3]"/>
+							<span ng-show="readonly && form.q[3]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							5. Reparto de las tareas domésticas:
+							<ul>
+								<li>Las tareas domésticas se cargan sobre un solo miembro</li>
+								<li>Por negligencia de los adultos recaen sobre menores</li>
+								<li>Existen miembros con capacidad que no contribuyen en las tareas domésticas</li>
+								<li>Las tareas recaen en un apoyo exterior; apoyo o institución</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[4]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[4]"/>
+							<span ng-show="readonly && form.q[4]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							6. Responsabilidad en educación y cuidado de los menores:
+							<ul>
+								<li>Se desentiende totalmente algún miembro con responsabilidad adquirida</li>
+								<li>Se desentienden los progenitores o cuidadores habituales</li>
+								<li>El cuidado recae en apoyos institucionales</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[5]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[5]"/>
+							<span ng-show="readonly && form.q[5]">&cross;</span>
+						</td>
+					</tr>
+					
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="form-summary">Valoración:</td>
+						<td class="form-qinput-summary text-center">
+							<valoracion-display ng-model="form.valoracion"/>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+
+		<div class="panel panel-default leyenda">
+			<div class="panel-heading" ng-click="showLeyend=!showLeyend">Leyenda <span class="pull-right glyphicon glyphicon-asterisk"></span></div>
+			<div class="panel-body" ng-class="{'leyend-expanded': showLeyend, 'leyend-collapsed': !showLeyend}">
+				<p>Señale la situación que mas se ajuste a la persona.</p>
+		    	<dl>
+		    		<dt class="leyenda-green"><valoracion-display ng-model="leyenda.a"/></dt><dd>Máximo 1 indicador entre los 5 primeros.</dd>
+		    		<dt class="leyenda-orange"><valoracion-display ng-model="leyenda.d"/></dt><dd>Máximo 2 indicadores entre los 5 primeros.</dd>
+		    		<br/>		    		
+		    		<br/>
+
+		    		<dt class="leyenda-red"><valoracion-display ng-model="leyenda.md"/></dt><dd>6<sup>o</sup> indicador marcado o 3 o más indicadores.</dd>
+		    	</dl>
+			</div>
+		</div>
+
+		<div ng-include src="navigationTemplate"></div>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>

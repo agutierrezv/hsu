@@ -1,0 +1,73 @@
+/* AUTOCOMPLETE */
+
+autocomplete {
+	padding: 0em;
+	margin:  0em;
+}
+.autocomplete,
+.autocomplete.form-control {
+	position: relative;
+	padding: 0px;
+	display: inline-block;
+}
+
+.autocomplete input{
+	font-size: 1em;
+	width: 100%;
+	padding: 6px 12px;
+	margin:  0em;
+}
+
+.autocomplete input[readonly]{
+	color: #000;
+	background-color: #eeeeee;
+}
+
+div.autocomplete > input.form-control.ng-valid-required {
+	border: 1px solid #fc0;
+}
+div.autocomplete > input:required:invalid,
+div.autocomplete > input.form-control.ng-invalid.ng-invalid-required {
+	background-color: #fffe0;
+	background: #fff url(/images/required-icon.png) no-repeat 96% center;
+}
+div.autocomplete > input:invalid,
+div.autocomplete > input.form-control.ng-invalid.ng-invalid-required {
+	border: 1px solid #fc0;
+	background:  #fff url(/images/invalid-icon.png) no-repeat 90% center;
+}
+
+
+.autocomplete ul{
+	padding-left: 0px;
+	background-color: #fff; 
+	position: absolute;
+	left: 0;
+	top: 2em;
+	width: 100%;
+	border-left: 1px solid #888;
+	border-right: 1px solid #888;
+	border-bottom: 1px solid #888;
+	z-index: 1;
+}
+.autocomplete li{
+	text-align: left;
+	list-style:none;
+	width: 100%;
+	padding-left: 0.7em;
+	padding-right: 0.7em;
+	padding-top: 0.1em;
+	padding-bottom: 0.1em;
+	background-color: #fff;
+}
+.autocomplete li.active{
+	width: 100%;
+	background-color: #4bf;
+}
+.autocomplete .highlight {
+	background-color: #F4C895; /*#E2E2E2;*/
+}
+.autocomplete li.active .highlight {
+	background: #666;
+	color: #fff;
+}

@@ -1,0 +1,181 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<form class="form-inline text-left" name="editForm">
+			<h3 ng-show="isEdition" class="text-center">Edición de Familia</h3>
+			<h3 ng-show="isCreation" class="text-center">Alta de Familia</h3>
+			<h3 ng-show="isDeletion" class="text-center">Eliminar Familia</h3>
+			<h3 ng-show="isView"     class="text-center">Familia</h3>
+			<fieldset class="fieldset" ng-show="dataReceived">
+				
+				<div class="row">	
+					<div class="form-group col-md-4">
+						<label for="inputCodigo" class="label1">Código</label>
+						<input id="inputCodigo" type="number" min="1" class="form-control width-number" placeholder="Codigo" ng-model="familia.codigo" required autofocus ng-readonly="readOnly" />
+					</div>
+					<div class="form-group col-md-5">
+						<label for="inputNombreFamilia" class="label1">Nombre de familia</label>
+						<input id="inputNombreFamilia" type="text" class="form-control" placeholder="Familia" ng-model="familia.nombreFamilia" required ng-readonly="readOnly"/>					
+					</div>
+					<div class="form-group col-md-3">
+						<label for="inputCodigoCallejero" class="label1">Código de callejero</label>
+						<input id="inputCodigoCallejero" type="text" class="form-control width-number" placeholder="" ng-model="familia.codigoCallejero" required ng-readonly="readOnly"/>
+					</div>
+				</div>
+				<br/>
+				<div class="row">	
+					<div class="form-group col-md-4">
+						<label for="inputTipoVia" class="label1">Tipo de Via</label>
+						<select id="inputTipoVia" class="form-control width-7em"
+								ng-model="familia.tipoVia" 
+							    ng-options="t.key as t.label for t in global.tipoVias"
+							    required
+							    ng-disabled="readOnly">
+						</select>
+					</div>
+					
+					<div class="form-group col-md-5">
+						<label for="inputNombreVia" class="label1">Nombre de via</label>
+						<input id="inputNombreVia" type="text" class="form-control width-long" placeholder="via" ng-model="familia.nombreVia" required ng-readonly="readOnly"/>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="inputNumeroVia" class="label1">Nº</label>
+						<input id="inputNumeroVia" type="number" class="form-control width-number" placeholder="nº" ng-model="familia.numeroVia" required ng-readonly="readOnly"/>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputAccesorio" class="label1">Accesorio</label>
+						<input id="inputAccesorio" type="text" class="form-control width-number" placeholder="Acc." ng-model="familia.accesorio" ng-readonly="readOnly" />
+					</div>
+
+					<div class="form-group col-md-5">
+						<label for="inputBloque" class="label1">Bloque</label>
+						<input id="inputBloque" type="text" class="form-control width-number" placeholder="Bloque" ng-model="familia.bloque" ng-readonly="readOnly"/>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="inputEscalera" class="label1">Escalera</label>
+						<input id="inputEscalera" type="text" class="form-control width-number" placeholder="Esc." ng-model="familia.escalera" ng-readonly="readOnly"/>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputPiso" class="label1">Piso</label>
+						<input id="inputPiso" type="number" class="form-control width-number" placeholder="Piso" ng-model="familia.piso" ng-readonly="readOnly" />
+					</div>
+					<div class="form-group col-md-5">
+						<label for="inputLetra" class="label1">Letra</label>
+						<input id="inputLetra" type="text" class="form-control width-number" placeholder="Letra" ng-model="familia.letra" ng-readonly="readOnly" />
+					</div>
+				</div>
+				
+				<br/>
+
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="inputCodigoPostal" class="label1">Código Postal</label>
+						<input id="inputCodigoPostal" type="text" class="form-control width-codigo-postal" placeholder="Cod. postal" ng-model="familia.codigoPostal" ng-readonly="readOnly" maxlength="5" />
+					</div>
+					<div class="form-group col-md-5">
+						<label for="inputLocalidadIne" class="label1">Localidad</label>
+						<autocomplete attr-input-id="inputLocalidadIne"
+						              ng-model="familia.localidadIne" 
+									  dataprovider="localidadDataProvider"
+									  attr-class="width-autocomplete"
+									  attr-input-class="form-control"
+									  attr-placeholder="Localidad"
+						              required 
+						              ng-readonly="readOnly">
+						</autocomplete>
+						<!--
+						<select id="inputLocalidadIne"
+								class="form-control width-localidad"
+								ng-model="familia.localidadIne" 
+							    ng-options="t.key as t.label for t in global.localidades"
+							    required
+							    ng-disabled="readOnly">
+						</select>
+						-->
+					</div>
+				</div>
+				
+				<div class="row">	
+					<div class="form-group col-md-4">
+						<label for="inputMunicipioIne" class="label1">Municipio</label>
+						<autocomplete attr-input-id="inputMunicipioIne" 
+									  ng-model="familia.municipioIne" 
+									  dataprovider="municipioDataProvider"
+									  attr-class="width-autocomplete"
+									  attr-input-class="form-control"
+									  attr-placeholder="Municipio"
+						              required 
+						              ng-readonly="readOnly">
+						</autocomplete>
+						<!-- <select id="inputMunicipioIne" 
+								class="form-control width-municipio"
+								ng-model="familia.municipioIne" 
+							    ng-options="t.key as t.label for t in global.municipios"
+							    required
+							    ng-disabled="readOnly">
+						</select>
+						-->
+					</div>
+			
+					<div class="form-group col-md-5">
+						<label for="inputProvinciaIne" class="label1">Provincia</label>
+						<select id="inputProvinciaIne" 
+								class="form-control width-select"						
+								ng-model="familia.provinciaIne" 
+							    ng-options="t.key as t.label for t in global.provincias"
+							    required
+							    ng-disabled="readOnly">
+						</select>
+					</div>
+					
+					<div class="form-group col-md-3">
+						<label for="inputTelefono" class="label1">Teléfono</label>
+						<input id="inputTelefono" type="text" class="form-control width-phone" placeholder="Teléfono" ng-model="familia.telefono" ng-readonly="readOnly" />
+					</div>
+				
+				</div>
+				<div class="row">	
+					<error-zone ng-model="errors"></error-zone>
+				</div>
+			</fieldset>
+
+			<div class="row acc-buttons">
+				<div class="form-group">
+					<button ng-show="isCreation" class="btn btn-primary" ng-click="add()" ng-disabled="editForm.$invalid" >
+						<span class="glyphicon glyphicon-plus"></span> Crear
+					</button>
+					<button ng-show="isEdition" class="btn btn-primary" ng-click="update()" ng-disabled="editForm.$invalid" >
+						<span class="glyphicon glyphicon-save"></span> Guardar
+					</button>
+					<button ng-show="isDeletion" class="btn btn-primary" ng-click="delete()" ng-disabled="editForm.$invalid" >
+						<span class="glyphicon glyphicon-trash"></span> Eliminar
+					</button>
+					<button ng-show="isView" class="btn btn-primary" ng-click="gotoEdit()" ng-disabled="editForm.$invalid" >
+						<span class="glyphicon glyphicon-pencil"></span> Modificar
+					</button>
+
+					<button ng-show="isView || isEdition" class="btn btn-primary" ng-click="gotoMiembros()">
+						<span class="glyphicon glyphicon-user"></span> Miembros
+					</button>
+
+					<button ng-hide="isView" class="btn" ng-click="cancel($event)">
+						Cancelar
+					</button>
+					<button ng-show="isView" class="btn" ng-click="cancel($event)">
+					 	Volver
+					</button>
+				</div>
+				<div class="form-group pull-right">
+					<button ng-show="isView" class="btn btn-primary " ng-click="gotoDelete()" ng-disabled="editForm.$invalid" >
+						<span class="glyphicon glyphicon-trash"></span> Eliminar
+					</button>
+				</div>
+			</div>
+			
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-1"></div>
+
+</div>

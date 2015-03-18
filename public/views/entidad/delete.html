@@ -1,0 +1,120 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Eliminar entidad</h3>
+			<fieldset ng-show="dataReceived">
+
+				<div class="form-group">
+					<label for="inputCodigo">Codigo</label>
+					<input id="inputCodigo" type="text" class="form-control" placeholder="Codigo" ng-model="entidad.codigo" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputDenominacion">Denominacion</label>
+					<input id="inputDenominacion" type="text" class="form-control" placeholder="Denominacion" ng-model="entidad.denominacion" readonly />
+				</div>
+
+				<div class="checkbox">
+					<label for="inputEsPublico" >
+						<input id="inputEsPublico" type="checkbox" ng-model="entidad.esPublico" readonly />
+						EsPublico
+					</label>
+				</div>
+
+				<div class="form-group">
+					<label for="inputCodigoCalejero">CodigoCalejero</label>
+					<input id="inputCodigoCalejero" type="text" class="form-control" placeholder="CodigoCalejero" ng-model="entidad.codigoCalejero" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputTipoVia">TipoVia</label>
+					<input id="inputTipoVia" type="text" class="form-control" placeholder="TipoVia" ng-model="entidad.tipoVia" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputNombreVia">NombreVia</label>
+					<input id="inputNombreVia" type="text" class="form-control" placeholder="NombreVia" ng-model="entidad.nombreVia" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputNumeroVia">NumeroVia</label>
+					<input id="inputNumeroVia" type="number" class="form-control" placeholder="NumeroVia" ng-model="entidad.numeroVia" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputAccesorio">Accesorio</label>
+					<input id="inputAccesorio" type="text" class="form-control" placeholder="Accesorio" ng-model="entidad.accesorio" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputBloque">Bloque</label>
+					<input id="inputBloque" type="number" class="form-control" placeholder="Bloque" ng-model="entidad.bloque" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputEscalera">Escalera</label>
+					<input id="inputEscalera" type="number" class="form-control" placeholder="Escalera" ng-model="entidad.escalera" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputPiso">Piso</label>
+					<input id="inputPiso" type="number" class="form-control" placeholder="Piso" ng-model="entidad.piso" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputLetra">Letra</label>
+					<input id="inputLetra" type="text" class="form-control" placeholder="Letra" ng-model="entidad.letra" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputCodigoPostal">CodigoPostal</label>
+					<input id="inputCodigoPostal" type="text" class="form-control" placeholder="CodigoPostal" ng-model="entidad.codigoPostal" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputLocalidadIne">LocalidadIne</label>
+					<input id="inputLocalidadIne" type="text" class="form-control" placeholder="LocalidadIne" ng-model="entidad.localidadIne" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputMunicipioIne">MunicipioIne</label>
+					<input id="inputMunicipioIne" type="text" class="form-control" placeholder="MunicipioIne" ng-model="entidad.municipioIne" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputProvinciaIne">ProvinciaIne</label>
+					<input id="inputProvinciaIne" type="text" class="form-control" placeholder="ProvinciaIne" ng-model="entidad.provinciaIne" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputTelefono1">Telefono1</label>
+					<input id="inputTelefono1" type="text" class="form-control" placeholder="Telefono1" ng-model="entidad.telefono1" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputTelefono2">Telefono2</label>
+					<input id="inputTelefono2" type="text" class="form-control" placeholder="Telefono2" ng-model="entidad.telefono2" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputEmail">Email</label>
+					<input id="inputEmail" type="text" class="form-control" placeholder="Email" ng-model="entidad.email" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputContacto">Contacto</label>
+					<input id="inputContacto" type="text" class="form-control" placeholder="Contacto" ng-model="entidad.contacto" readonly />
+				</div>
+
+				<div class="form-group">
+					<button class="btn btn-danger" ng-click="delete($event)" ng-disabled="editForm.$invalid" >Delete</button>
+					<button class="btn" ng-click="cancel($event)" >Cancel</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

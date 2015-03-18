@@ -1,0 +1,84 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+					<a class="iconBig" href ng-click="add()" ><span class="glyphicon glyphicon-plus"></span></a>
+				</td>
+				<td class="text-center">
+					<h3><span>Municipios</span></h3>
+				</td>
+				<td class="text-right">
+				  <a class="iconBig" href ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+			<div class="upperTableZone">
+			<div class="btn-group cursor-pointer" dropdown is-open="status.isopen">
+				<button type="button" class="btn btn-primary dropdown-toggle btn-sm">
+				Acciones <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a data-ng-click="importData()"><span class="glyphicon glyphicon-import"></span> Importar desde CSV o XLSX</a></li>
+					<li class="divider"></li>
+					<li><a data-ng-click="exportAsXlsx()"><span class="glyphicon glyphicon-export"></span> Exportar como XLSX</a></li>
+					<li><a data-ng-click="exportAsCsv()"><span class="glyphicon glyphicon-export"></span> Exportar como CSV</a></li>
+					<li><a data-ng-click="exportAsXml()"><span class="glyphicon glyphicon-export"></span> Exportar como XML</a></li>
+					
+					<li ng-hide="noneSelected" class="divider"></li>
+					<li ng-hide="noneSelected"><a class="error" data-ng-click="deleteSelected()"><span class="glyphicon glyphicon-remove error"></span> Eliminar selección: {{getSelectedItems().length}} elementos</a></li>
+					<li class="divider"></li>
+					<li><a class="error" data-ng-click="deleteAll()"><span class="glyphicon glyphicon-remove error"></span> Eliminar filtrados: {{totalItems}} elementos</a></li>
+				</ul>
+			</div>
+			<search-tool class="inline-table"
+						 ng-model="searchContext"
+						 search="refresh"
+						 >
+			</search-tool>
+		</div>
+
+		<table id="itemList" class="data-tabe table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+					<input type="checkbox" data-ng-model="allSelected" data-ng-click="selectAll($event)" tooltip="Select/Unselect all">
+				</th>				
+				<th>Código</th>
+				<th>Etiqueta</th>
+				<th>Descripción</th>
+
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in dataList">
+					<td>
+						<input type="checkbox" data-ng-model="row._isSelected" data-ng-click="selectItem(row, $event)">
+					</td>			
+					<td class="data"><a ng-click="edit(row)">{{row.key}}</a></td>
+					<td class="data">{{row.label}}</td>
+					<td class="data">{{row.description}}</td>
+
+					<td><a href ng-click="edit(row)"><span class="glyphicon glyphicon-edit" tooltip="Edit"></a></td>
+					<td><a href ng-click="delete(row)"><span class="glyphicon glyphicon-remove error" tooltip="Delete"></a></td>
+				</tr>
+			</tbody>
+		</table>			
+		
+		<div ng-show="dataReceived" class="text-center">
+			<div>
+				<pagination max-size="10" boundary-links="true" 
+				            total-items="totalItems" items-per-page="pageSize" data-ng-model="currentPage" 
+							data-ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+				</pagination>
+			</div>
+		</div>			
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="Loading..." />
+		</div>
+
+	</div>
+</div>

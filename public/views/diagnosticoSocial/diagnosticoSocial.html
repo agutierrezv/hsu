@@ -1,0 +1,60 @@
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<h3 class="text-center">Diagnóstico Social</h3>		
+
+		<div ng-show="!familia.id">
+			Seleccione una familia.
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="text-left ifield">
+					<span for="familia" class="flabel">Familia:</span>
+					<span>{{familia.nombreFamilia}} {{familia.direccion || '(no asignado)'}}</span>
+					<button class="btn btn-primary pull-right" tooltip="Selecionar familia" 
+						    ng-click="seleccionarFamilia()">
+						    <span class="glyphicon glyphicon-search"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<error-zone ng-model="errors"></error-zone> 
+
+		
+		<table class="table" ng-show="familia.id && diagnosticos">
+			<thead>
+				<th>Revisión</th>
+				<th>Estado</th>
+				<th>Valoración</th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="diag in diagnosticos">
+					<td>
+						<a ng-click="verDiagnostico(diag)">{{diag.version | date:'dd/MM/yyyy' }}</a>
+					</td>
+					<td>
+						{{diag.estado}}
+					</td>
+					<td>
+						{{diag.valoracion}}
+					</td>
+					<td>
+						<a ng-show="diag.estado == 'Abierto'" ng-click="eliminarDiagnostico(diag)">eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div ng-show="familia.id">
+			<button class="btn btn-primary" ng-click="nuevoDiagnostico()">Nuevo diagnóstico</button>
+			<span ng-show="!diagnosticos.length>0">
+				No hay diágnosticos previos para esta familia. 
+			</span>
+		</div>
+
+	</div>
+	<div class="col-md-3"></div>
+</div>

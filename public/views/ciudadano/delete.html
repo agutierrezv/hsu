@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Eliminar Usuario</h3>
+			<fieldset ng-show="dataReceived">
+
+				<div class="form-group">
+					<label for="inputCiudadanoId">Ciudadano Id</label>
+					<input id="inputCiudadanoId" type="number" class="form-control" placeholder="CiudadanoId" ng-model="ciudadano.ciudadanoId" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputIdentificador">Identificador</label>
+					<input id="inputIdentificador" type="text" class="form-control" placeholder="Identificador" ng-model="ciudadano.identificador" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputTipoIdentificador">TipoIdentificador</label>
+					<input id="inputTipoIdentificador" type="text" class="form-control" placeholder="TipoIdentificador" ng-model="ciudadano.tipoIdentificador" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputNombre">Nombre</label>
+					<input id="inputNombre" type="text" class="form-control" placeholder="Nombre" ng-model="ciudadano.nombre" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputApellido1">Apellido1</label>
+					<input id="inputApellido1" type="text" class="form-control" placeholder="Apellido1" ng-model="ciudadano.apellido1" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputApellido2">Apellido2</label>
+					<input id="inputApellido2" type="text" class="form-control" placeholder="Apellido2" ng-model="ciudadano.apellido2" readonly />
+				</div>
+				
+				<div class="form-group">
+					<button class="btn btn-danger" ng-click="delete($event)" ng-disabled="editForm.$invalid" >Eliminar</button>
+					<button class="btn" ng-click="cancel($event)" >Cancelar</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

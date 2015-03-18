@@ -1,0 +1,468 @@
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="badge badge-form-no">2/11</div>
+		<h3 class="text-center">2. Habilidades Sociales</h3>		
+
+		<div ng-include src="navigationTemplate"></div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="text-left ifield">
+					<span for="familia" class="flabel">Familia:</span>
+					<span>{{familia.nombreFamilia}} {{familia.direccion}}</span>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="text-right ifield">
+					<div for="inputFecha" class="flabel">Fecha:</div>
+					<span>{{diagnostico.version | date:'dd/MM/yyyy'}}</span> 
+				</div>
+			</div>
+		</div>
+
+		<error-zone ng-model="errors"></error-zone>
+
+		<p><strong>Instrucciones:</strong> Señale los indicadores que la persona <em>no domina</em>.</p>
+
+		<form>
+			<table class="form-table">
+				<thead>
+					<th class="col-md-9">Pregunta</th>
+					<th class="col-md-3">Valoración</th>						
+				</thead>
+				<tbody>
+					<tr>
+						<td class="form-question" colspan="2">
+							1. Capacidad de Iniciar o mantener una conversación.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Iniciar conversación</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[0]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[0]"/>
+							<span ng-show="readonly && form.q[0]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Mantener conversación</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[1]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[1]"/>
+							<span ng-show="readonly && form.q[1]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Formular preguntas</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[2]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[2]"/>
+							<span ng-show="readonly && form.q[2]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Dar las gracias</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[3]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[3]"/>
+							<span ng-show="readonly && form.q[3]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Presentarse</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[4]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[4]"/>
+							<span ng-show="readonly && form.q[4]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Saber presentar</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[5]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[5]"/>
+							<span ng-show="readonly && form.q[5]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Hacer un cumplido</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[6]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[6]"/>
+							<span ng-show="readonly && form.q[6]">&cross;</span>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="form-question" colspan="2">
+							2. Capacidad de captar y expresar sentimientos propios y de los demás.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Conocer sentimientos propios</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[7]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[7]"/>
+							<span ng-show="readonly && form.q[7]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Saber expresarlos</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[8]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[8]"/>
+							<span ng-show="readonly && form.q[8]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Expresar afecto</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[9]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[9]"/>
+							<span ng-show="readonly && form.q[9]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Comprender sentimientos de los demas</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[10]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[10]"/>
+							<span ng-show="readonly && form.q[10]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Resolver el miedo</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[11]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[11]"/>
+							<span ng-show="readonly && form.q[11]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Auto recompersarse</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[12]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[12]"/>
+							<span ng-show="readonly && form.q[12]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question" colspan="2">
+							3. Capacidad de analizar con realismo su situación y proponerse objetivos en relación al progreso de su vida.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Conocimientos de recursos propios</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[13]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[13]"/>
+							<span ng-show="readonly && form.q[13]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Familiares y sociales</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[14]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[14]"/>
+							<span ng-show="readonly && form.q[14]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Saber pedir ayuda, negociar, emplear autocontrol, participar y seguir instrucciones</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[15]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[15]"/>
+							<span ng-show="readonly && form.q[15]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Afán de superación</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[16]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[16]"/>
+							<span ng-show="readonly && form.q[16]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Formulación de objetivos realistas</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[17]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[17]"/>
+							<span ng-show="readonly && form.q[17]">&cross;</span>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="form-question" colspan="2">
+							4. Relacionados con resolución de conflictos.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Escuchar</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[18]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[18]"/>
+							<span ng-show="readonly && form.q[18]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Formulas preguntas</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[19]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[19]"/>
+							<span ng-show="readonly && form.q[19]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Negociar</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[20]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[20]"/>
+							<span ng-show="readonly && form.q[20]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Aportar razones para convencer</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[21]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[21]"/>
+							<span ng-show="readonly && form.q[21]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Plantear alternativas</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[22]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[22]"/>
+							<span ng-show="readonly && form.q[22]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Compartir para acabar con el conflicto</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[23]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[23]"/>
+							<span ng-show="readonly && form.q[23]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Solicitar cambio de conducta</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[24]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[24]"/>
+							<span ng-show="readonly && form.q[24]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Responder a la presión con convencimineto. No ceder</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[25]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[25]"/>
+							<span ng-show="readonly && form.q[25]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>No entrar en peleas</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[26]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[26]"/>
+							<span ng-show="readonly && form.q[26]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Defender a un amigo</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[27]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[27]"/>
+							<span ng-show="readonly && form.q[27]">&cross;</span>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="form-question" colspan="2">
+							5. Adaptación a situaciones nuevas o inmodificables.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>No entrar en peleas</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[28]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[28]"/>
+							<span ng-show="readonly && form.q[28]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>No precipitarse en las respuestas</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[29]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[29]"/>
+							<span ng-show="readonly && form.q[29]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Analizar fallos o errores cometidos</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[30]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[30]"/>
+							<span ng-show="readonly && form.q[30]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Responder al fracaso o cambio de situación con objetivos nuevos</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[31]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[31]"/>
+							<span ng-show="readonly && form.q[31]">&cross;</span>
+						</td>
+					</tr>
+										<tr>
+						<td>
+							<ul>
+								<li>Estrategias adecuadas a los objetivos</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[32]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[32]"/>
+							<span ng-show="readonly && form.q[32]">&cross;</span>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<ul>
+								<li>Adecuación de objetivos</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[33]}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[33]"/>
+							<span ng-show="readonly && form.q[33]">&cross;</span>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="form-summary">Valoración:</td>
+						<td class="form-qinput-summary text-center">
+							<valoracion-display ng-model="form.valoracion"/>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+
+		<div class="panel panel-default leyenda">
+			<div class="panel-heading" ng-click="showLeyend=!showLeyend">Leyenda <span class="pull-right glyphicon glyphicon-asterisk"></span></div>
+			<div class="panel-body" ng-class="{'leyend-expanded': showLeyend, 'leyend-collapsed': !showLeyend}">
+				<p>Señale los indicadores que la persona no domina.</p>
+		    	<dl>
+		    		<dt class="leyenda-green"><valoracion-display ng-model="leyenda.a"/></dt><dd>Hasta 3 indicadicadores.</dd>
+		    		<dt class="leyenda-orange"><valoracion-display ng-model="leyenda.d"/></dt><dd>Entre 4 y 6 indicadicadores.</dd>
+		    		<dt class="leyenda-red"><valoracion-display ng-model="leyenda.md"/></dt><dd>Más de 6 indicadicadores.</dd>
+		    	</dl>
+			</div>
+		</div>
+
+		<div ng-include src="navigationTemplate"></div>
+
+
+	</div>
+	<div class="col-md-2"></div>
+</div>

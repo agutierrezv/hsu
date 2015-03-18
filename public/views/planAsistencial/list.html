@@ -1,0 +1,134 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+					<a class="iconBig" href ng-click="add()" ><span class="glyphicon glyphicon-plus"></span></a>
+				</td>
+				<td class="text-center">
+					<h3><span>Planes Asistenciales</span></h3>
+				</td>
+				<td class="text-right">
+				  <a class="iconBig" href ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="upperTableZone">
+			<div class="btn-group cursor-pointer" dropdown is-open="status.isopen">
+				<button type="button" class="btn btn-primary dropdown-toggle btn-sm">
+				Acciones <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a data-ng-click="importData()"><span class="glyphicon glyphicon-import"></span> Importar desde CSV o XLSX</a></li>
+					<li class="divider"></li>
+					<li><a data-ng-click="exportAsXlsx()"><span class="glyphicon glyphicon-export"></span> Exportar como XLSX</a></li>
+					<li><a data-ng-click="exportAsCsv()"><span class="glyphicon glyphicon-export"></span> Exportar como CSV</a></li>
+					<li><a data-ng-click="exportAsXml()"><span class="glyphicon glyphicon-export"></span> Exportar como XML</a></li>
+					
+					<li ng-hide="noneSelected" class="divider"></li>
+					<li ng-hide="noneSelected"><a class="error" data-ng-click="deleteSelected()"><span class="glyphicon glyphicon-remove error"></span> Eliminar selección: {{getSelectedItems().length}} elementos</a></li>
+					<li class="divider"></li>
+					<li><a class="error" data-ng-click="deleteAll()"><span class="glyphicon glyphicon-remove error"></span> Eliminar filtrados: {{totalItems}} elementos</a></li>
+				</ul>
+			</div>
+			<div class="searchZone">
+				<input id="searchTextbox" type="string" data-ng-model="searchText" data-ng-change="refresh()" placeholder="criterio de selección">
+				<button class="btn btn-sm" data-ng-click="clearSearch()" data-ng-hide="searchText=='' || searchText==null">Limpiar</button>
+			</div>
+			<div class="foundZone">
+				<span data-ng-show="totalItems>0">{{totalItems}} encontrados.</span>
+				<span data-ng-show="totalItems==1">Uno encontrado.</span>
+				<span data-ng-show="totalItems==0">Sin elementos encontrados.</span>
+			</div>
+		</div>
+
+		<table id="itemList" class="data-tabe table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+					<input type="checkbox" data-ng-model="allSelected" data-ng-click="selectAll($event)" tooltip="Select/Unselect all">
+				</th>				
+				<th>Código</th>
+				<th>Domicilio familiar</th>
+				<!-- <th>CiudadanoId</th> -->
+				<th>Identificador</th>
+				<th>Nombre</th>
+				<th>1<sup>er</sup> apellido</th>
+				<th>2º apellido</th>
+				<th>Apertura</th>
+				<th>Cierre</th>
+				<!-- <th>ProfesionalId</th>  -->
+				<th>Profesional de referencia</th>
+				
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="planAsistencial in dataList">
+					<td>
+						<input type="checkbox" data-ng-model="planAsistencial._isSelected" data-ng-click="selectItem(planAsistencial, $event)">
+					</td>			
+					<td class="data"><a ng-click="detalle(planAsistencial)">{{planAsistencial.codigo}}</a></td>
+					<td class="data"> 
+						<a ng-show="planAsistencial.familia" ng-click="gotoFamilia(planAsistencial)">{{planAsistencial.domicilioFamiliar}}</a>
+						<span ng-show="!planAsistencial.familia">{{planAsistencial.domicilioFamiliar}}</span>
+					</td>
+					<!--  <td class="data">{{planAsistencial.ciudadanoId}}</td>  -->
+					<td class="data">{{planAsistencial.identificacionCiudadano}}</td>
+					<td class="data">{{planAsistencial.nombre}}</td>
+					<td class="data">{{planAsistencial.apellido1}}</td>
+					<td class="data">{{planAsistencial.apellido2}}</td>
+					<td class="data">{{planAsistencial.fechaApertura | date:'dd/MM/yyyy'}}</td>
+					<td class="data">{{planAsistencial.fechaCierre | date:'dd/MM/yyyy'}}</td>
+					<!--  <td class="data">{{planAsistencial.profesionalId}}</td>  -->
+					<td class="data">
+						<a ng-if="planAsistencial.profesionalReferencia"
+						   href="#/profesional/detalle/{{planAsistencial.profesionalId}}">
+						{{planAsistencial.profesionalReferencia}}
+						</a>
+					</td>
+					
+					<td><a ng-click="detalle(planAsistencial)"><span class="glyphicon glyphicon-th-list" tooltip="Ver detalle"></span></a></td>
+					<td><a  ng-click="asignar(planAsistencial)"><span class="glyphicon glyphicon-user" tooltip="Asignar Profesional"></span></a></td>
+					<td><a ng-click="edit(planAsistencial)"><span class="glyphicon glyphicon-edit" tooltip="Editar"/></a></td>
+					<td><a ng-click="delete(planAsistencial)"><span class="glyphicon glyphicon-remove error" tooltip="Borrar"></span></a></td>
+				</tr>
+			</tbody>
+		</table>			
+		
+	
+		<div class="cmd-right">
+			<button class="btn btn-primary" href ng-click="add()" ><span class="glyphicon glyphicon-plus"></span>
+			Nuevo PAS
+			</button>
+		</div>		
+
+		<div ng-show="dataReceived" class="text-center">
+			<!--<div style="display: inline; vertical-align: middle;">
+				<label for="pageSize">Page Size: </label>
+				<select id="pageSize" data-ng-model="pageSize">
+					<option>10</option>
+					<option>20</option>
+					<option>50</option>
+					<option>100</option>
+				</select>
+			</div> -->
+			<div>
+				<pagination max-size="10" boundary-links="true" 
+				            total-items="totalItems" items-per-page="pageSize" data-ng-model="currentPage" 
+							data-ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+				</pagination>
+			</div>
+
+		</div>
+
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="Loading..." />
+		</div>
+
+	</div>
+</div>

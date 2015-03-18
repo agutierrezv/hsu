@@ -1,0 +1,85 @@
+<div class="row">
+	<div class="col-md-12">
+		<h3 class="text-center">Asignar profesional</h3>
+	</div>
+</div>
+
+<br/>
+
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-6">
+		<form class="form-vertical text-left" name="editForm" ngCloak>
+
+			<label class="widthLabel">Código de PAS:</label><div class="inline">{{planAsistencial.codigo}}</div><br/>
+			<label class="widthLabel">Domicilio familiar:</label><div class="inline">{{planAsistencial.domicilioFamiliar}}</div><br/>
+			<label class="widthLabel">Identificación:</label><div class="inline">{{planAsistencial.identificacionCiudadano}}</div><br/>
+			<label class="widthLabel">Usuario:</label><div class="inline">{{planAsistencial.nombre}} {{planAsistencial.apellido1}} {{planAsistencial.apellido2}}</div><br/>
+			
+			<br/>
+
+			<label class="widthLabel">Profesional de referencia:</label>
+			<div class="inline widthLabel">
+			   {{profesionalReferencia || planAsistencial.profesionalReferencia || '(no asignado)'}}
+			</div>
+			<button class="btn btn-primary" tooltip="Selecionar profesional" ng-click="seleccionarProfesional()">
+				<span class="glyphicon glyphicon-search"/>
+			</button>
+
+<!--
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputCodigo">Código</label>
+					<input id="inputCodigo" type="text" class="form-control" placeholder="Codigo" ng-model="planAsistencial.codigo" readonly />
+				</div>
+				<div class="form-group">
+					<label for="inputDomicilioFamiliar">Domicilio familiar</label>
+					<input id="inputDomicilioFamiliar" type="text" class="form-control" placeholder="DomicilioFamiliar" ng-model="planAsistencial.domicilioFamiliar" readonly />
+				</div>
+				
+				<div class="form-group">
+					<label for="inputIdentificacionCiudadano">Identificación</label>
+					<input id="inputIdentificacionCiudadano" type="text" class="form-control" placeholder="IdentificacionCiudadano" ng-model="planAsistencial.identificacionCiudadano" readonly />
+				</div>
+				<div class="form-group">
+					<label for="inputNombre">Nombre</label>
+					<input id="inputNombre" type="text" class="form-control" placeholder="Nombre" ng-model="planAsistencial.nombre" readonly />
+				</div>
+				<div class="form-group">
+					<label for="inputApellido1">1<sup>er</sup> apellido</label>
+					<input id="inputApellido1" type="text" class="form-control" placeholder="Apellido1" ng-model="planAsistencial.apellido1" readonly />
+				</div>
+				<div class="form-group">
+					<label for="inputApellido2">2º apellido</label>
+					<input id="inputApellido2" type="text" class="form-control" placeholder="Apellido2" ng-model="planAsistencial.apellido2" readonly/>
+				</div>
+			
+				
+				<div class="form-group">
+					<label for="inputProfesionalId">ProfesionalId</label>
+					<input id="inputProfesionalId" type="hidden" class="form-control" placeholder="ProfesionalId" ng-model="planAsistencial.profesionalId" />
+				</div> 
+
+				<div class="form-group">
+					<label for="inputProfesionalReferencia">Profesional de referencia</label>
+					<input id="inputProfesionalReferencia" type="text" class="form-control" placeholder="ProfesionalReferencia" ng-model="planAsistencial.profesionalReferencia" readonly/>
+				</div>
+			</fieldset>
+	-->
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="form-group">
+				<button class="btn btn-primary" ng-click="execute($event)" ng-disabled="editForm.$invalid" >Asignar</button>
+				<button class="btn" ng-click="cancel($event)" >Cancelar</button>
+			</div>
+
+
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>

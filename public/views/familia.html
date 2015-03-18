@@ -1,0 +1,134 @@
+<div class="header2">
+	<h3>Unidad familiar</h3>
+	<hr class="topRule" />
+</div>
+
+<div class="row czRow">
+	<div class="col-md-1"></div>
+	<div class="col-md-5">
+		
+		<div class="czLabel">Domicilio:</div>
+		<div class="czContent" address-display ng-model="familia.direccion"></div><br/>
+		<div class="czLabel">Teléfono:</div>
+		<div class="czContent" phone-display ng-model="familia.telefono"></div><br/>
+		
+		<!--<h3>Familia Jawara</h3>
+		<div class="czLabel">Domicilio:</div> <div class="czContent" address-display ng-model="familia.direccion"></div> <br/>
+		<div class="czLabel">Teléfono:</div> <div class="czContent" phone-display ng-model="familia.telefono"></div> <br/>
+-->
+
+		<div class="row text-center">
+			<button name="doc" class="czAction" ng-click="documentacion()">Documentación</button>
+		</div>
+
+		<h4>Miembros</h4>
+
+		<table class="miembrosTable">
+			<thead>
+				<th class="familia-l col-md-3">Rol</th>
+				<th class="familia-l col-md-6">Nombre</th>
+				<th class="familia-l col-md-2">Sexo</th>
+				<th class="familia-r col-md-1">Edad</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="miembro in miembros" ng-class-odd="'oddRow'">
+					<td class="familia-l">
+						{{miembro.parentesco | labelEnum:'parentescos' }}
+					</td>
+					<td class="familia-l">
+						<a href="" ng-click="visor(miembro.ciudadano._id)">
+							<span class="glyphicon glyphicon-search ng-scope" tooltip="Visor"></span>
+							{{miembro.ciudadano.nombre}} {{miembro.ciudadano.apellido2}} {{miembro.ciudadano.apellido1}} 
+						</a>
+					</td>
+					<td class="familia-l">
+							{{miembro.ciudadano.sexo | sexo}}
+					</td>
+					<td class="familia-r">
+							{{miembro.ciudadano.fechaNacimiento | edad}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<div class="col-md-5">
+
+		<br/>
+
+		<h4>Historia:</h4>
+
+		<dl class="vsu">
+			<div ng-repeat="item in familia.timeline">
+				<dt>
+					<div ng-if="item.year" class="czYear">{{item.year}}</div> 
+					<div class="czDate">{{item.fecha | date:'d-MMMM'}}</div> 
+					<div class="czTitle">{{item.titulo}}</div> 
+					<a ng-show="item.masInfoUrl" href="{{item.masInfoUrl}}"  class="moreInfo">{{item.masInfoLabel}}</a>	
+				</dt>
+				<dd>
+					<p>
+						<span ng-repeat="desc in item.descripcion">
+							{{desc}} <br/>
+						</span>
+						<span ng-show="item.estado">Estado: <span>{{item.estado}}</span></span>
+	
+					</p>
+				</dd>
+			</div>
+		</dl>			
+
+		<!--
+		<dl class="vsu">
+			<dt>
+				<div class="czYear">2014</div> 
+				<div class="czDate">4 de noviembre</div> 
+				<div class="czTitle">Ayuda escolar</div> 
+			</dt>
+			<dd>
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est.	<a href="#/details" class="moreInfo">+info</a>		
+			</dd>
+
+			<dt>
+				<div class="czYear">2013</div> 
+				<div class="czDate">12 de septiembre</div> 
+				<div class="czTitle">Realojamiento familiar</div> 
+			</dt>
+			<dd>
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est.	<a href="#/details" class="moreInfo">+info</a>		
+			</dd>
+
+			<dt>
+				<div class="czDate">21 de junio</div> 
+				<div class="czTitle">Reagrupacion familiar</div> 
+			</dt>
+			<dd>
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est.	<a href="#/details" class="moreInfo">+info</a>		
+			</dd>
+
+			<dt>
+				<div class="czYear">2012</div> 
+				<div class="czDate">1 de mayo</div> 
+				<div class="czTitle">Ayuda por dependencia</div> 
+			</dt>
+			<dd>
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. <a href="#/details" class="moreInfo">+info</a>	
+			</dd>
+		</dl>
+		-->
+
+	</div>
+	<div class="col-md-1"></div>
+
+
+</div>

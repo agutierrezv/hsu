@@ -1,0 +1,5 @@
+<div class="btn-group tristate-input">
+  <a class="btn btn-default" ng-class="{true: 'btn-success'} [ngModel]"        ng-click="toggle(true)">Si</a>
+  <a class="btn btn-default" ng-class="{true: 'btn-info'}    [ngModel==null]"  ng-click="toggle(null)" tooltip="No contestado">N.c.</a>
+  <a class="btn btn-default" ng-class="{true: 'btn-danger'}  [ngModel==false]" ng-click="toggle(false)">No</a>
+</div>

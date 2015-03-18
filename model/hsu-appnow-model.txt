@@ -1,0 +1,227 @@
+class Entidad
+{
+	string Codigo;
+	string Denominacion;
+	bool EsPublico;
+	string? CodigoCalejero;
+	string TipoVia;
+	string NombreVia;
+	int? NumeroVia;
+	string? Accesorio;
+	int? Bloque;
+	int? Escalera;
+	int? Piso;
+	string? Letra;
+	string CodigoPostal;
+	string? LocalidadIne;
+	string? MunicipioIne;
+	string? ProvinciaIne;
+	string? Telefono1;
+	string? Telefono2;
+	string? Email;
+	string? Contacto;
+}
+class Recurso
+{
+	string Codigo;
+	string Denominacion;
+	bool EsPublico;
+	string? CodigoCalejero;
+	string TipoVia;
+	string NombreVia;
+	int? NumeroVia;
+	string? Accesorio;
+	int? Bloque;
+	int? Escalera;
+	int? Piso;
+	string? Letra;
+	string CodigoPostal;
+	string? LocalidadIne;
+	string? MunicipioIne;
+	string? ProvinciaIne;
+	string? Telefono1;
+	string? Telefono2;
+	string? Email;
+	string? Contacto;
+	string? Sector;
+	string? Tipologia;
+	string? CentroServicio;
+	string? AmbitoGeografico;
+	int? NumeroPlazas;
+	int? PlazasOcupadas;
+	int? PlazasDisponibles;
+	decimal? CosteDisponibilidad;
+	int? PlazasReservadas;
+	string? EntidadTitular;
+	string? EntidadGestora;
+}
+
+class Profesional
+{
+	string Codigo;
+	string TipoIndentificador;
+	string Identificador;
+	string? Prefijo;
+	string Nombre;
+	string Apellido1;
+	string? Apellido2;
+	string? Telefono;
+	string? Email;
+	string? Tipologia;
+	string? Sector;
+	bool EsPublico;
+	bool Acreditado;
+	string? AmbitoGeografico;
+	string? Nivel;
+	string? Perfil;
+}
+
+class Ciudadano
+{
+	int CiudadanoId;
+	string Identificador;
+	string TipoIdentificador;
+	string Nombre;
+	string Apellido1;
+	string Apellido2;
+	string Sexo;
+	string EstadoCivil;
+	bool ParejaDeHecho;
+	date FechaNacimiento;
+	string ProvinciaNacimineto;
+	string PaisDeNacimiento;
+	string Nacionalidad;
+	int IngresosAnuales;
+	bool Empadronamiento;
+	date FechaEmpadronamiento;
+	string? CausaBaja;
+	date? FechaBaja;
+	string Telefono1;
+	string Telefono2;
+	string Email;
+	bool Discapacidad;
+	string GradoDiscapacidad;
+	string Diagnostico;
+	string ValoracionDependencia;
+	string Rae;
+	string Ocupacion;
+	string SituacionHistoriaLaboral;
+	int AnnosResidenciaCCAA;
+	int AnnosResidenciaMunicipio;
+	string NivelEstudios;
+	int TarjetaSanitaria;
+	string CoberturaSanitaria;
+	string Medico;
+	string CentroSalud;
+	string DireccionCentroSalud;
+	string TelefonoCentroSalud;
+	time HorarioConsultaCentroSalud;
+	string Observaciones;
+}
+class Familia
+{
+	int Codigo;
+	string CodigoCallejero;
+	string TipoVia;
+	string NombreVia;
+	int NumeroVia;
+	string Accesorio;
+	int? Bloque;
+	int? Escalera;
+	int Piso;
+	string Letra;
+	string? CodigoPostal;
+	string LocalidadIne;
+	string MunicipioIne;
+	string ProvinciaIne;
+	string CentroSSSS;
+	string Uts;
+	string ProfesionalReferencia;
+	string? Telefono1;
+	string? Telefono2;
+	string? Email;
+	int? IngresosPensiones;
+	int? BienesUrbanosArrendados;
+	int? BienesUrbanosSinArrendar;
+	int? BienesRusticosArrendados;
+	int? BienesRusticosSinArrendar;
+	int InteresesCapitalMobiliario;
+	int? OtrosIngresosFamiliares;
+	string SituacionEconomica;
+	string TipoVivienda;
+	int Personas;
+	string RegimenTenencia;
+	int Superficie;
+	int Habitaciones;
+	int M2xPersona;
+	int CosteAnual;
+	bool AguaCorriente;
+	bool AguaCaliente;
+	bool Wc;
+	bool Telefono;
+	bool Ducha;
+	bool Frigorifico;
+	bool Electricidad;
+	bool Calefaccion;
+	bool Gas;
+	bool Lavadora;
+	bool? BarrerasArquitectonicas;
+	bool? AmenzaRuina;
+	bool? FaltaIluminacionNatural;
+	bool? FaltaVentilacion;
+	bool? Deteriorada;
+	bool? InadecuadaDistribucion;
+	bool MalasCondiciones;
+	bool Aceptable;
+}
+class Miembro
+{
+	int FamiliaId;
+	int CiudadanoId;
+	date FechaAlta;
+	string? Parentesco;
+	date? FechaBaja;
+	string? CausaBaja;
+}
+class PlanAsistencial
+{
+	string Codigo;
+	string? DomicilioFamiliar;
+	string? CiudadanoId;
+	string IdentificacionCiudadano;
+	string Nombre;
+	string Apellido1;
+	string? Apellido2;
+	date? FechaSolicitud;
+	date? FechaApertura;
+	string? ProfesionalId;
+	string? ProfesionalReferencia;	
+}
+class GeoPoint
+{
+	string Nombre;
+	string? Descripcion;
+	string? Tipo;
+
+	decimal Longitud;
+	decimal Latitud;
+
+	string? Medicion;
+	decimal? Valor;
+	string? Unidad;
+}
+class Servicio
+{
+	string Codigo;
+	string? Descripcion;
+	string? Colectivo;
+	string? Caracteristicas;
+	string? SolicitudDocumentacion;
+	date? PlazoInicio;
+	date? PlazoFin;
+	string? LugarDePresentacion;
+	string? Contacto;
+	string? InstanciaDeParte;
+}
+
+

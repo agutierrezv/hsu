@@ -1,0 +1,124 @@
+<div class="row">
+	<div class="col-md-12">
+		<h3 class="text-center">Plan Asistencial</h3>
+	</div>
+</div>
+
+<br/>
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<form class="form-vertical text-left" name="editForm" ngCloak>
+
+			<label class="widthLabel">Código de PAS:</label>
+			<div class="inline">{{planAsistencial.codigo}}</div>
+
+			<label class="widthLabel"> </label>
+			<label class="widthLabel">Estado:</label>
+			<div ng-show="planAsistencial.fechaCierre == null" class="inline">
+				Abierto el {{planAsistencial.fechaApertura | date:'dd MMMM yyyy'}}
+			</div>
+			<div ng-show="planAsistencial.fechaCierre" class="inline">
+				<span>Cerrado el {{planAsistencial.fechaCierre | date:'dd MMMM yyyy'}}</span>
+			</div>
+			<br/>
+			
+			<label class="widthLabel">Fecha de apertura:</label>
+			<div class="inline">{{planAsistencial.fechaApertura | date:'dd MMMM yyyy'}}</div><br/>
+
+			<label class="widthLabel">Domicilio familiar:</label>
+			<div class="inline" address-display ng-model="planAsistencial.domicilioFamiliar"></div><br/>	
+
+			<label class="widthLabel">Identificación:</label>
+			<div class="inline">{{planAsistencial.identificacionCiudadano}}</div><br/>
+
+			<label class="widthLabel">Usuario:</label>
+			<div class="inline">{{planAsistencial.nombre}} {{planAsistencial.apellido1}} {{planAsistencial.apellido2}}</div>
+			<br/>
+
+			<label class="widthLabel">Familia:</label>
+			<div class="inline widthLabel">{{familia.nombreFamilia || '(no asignado)'}}</div>
+		
+			<button ng-show="planAsistencial.fechaCierre == null"
+			        class="btn btn-primary" 
+			        tooltip="Selecionar familia" 
+			        ng-click="seleccionarFamilia()">
+				<span class="glyphicon glyphicon-search"/>
+			</button>
+
+			<br/>
+			<br/>
+
+			<label class="widthLabel">Profesional de referencia:</label>
+			<div class="inline widthLabel">{{planAsistencial.profesionalReferencia || '(no asignado)'}}</div>
+		
+			<button ng-show="planAsistencial.fechaCierre == null"
+					class="btn btn-primary" 
+					tooltip="Selecionar profesional" 
+					ng-click="seleccionarProfesional()">
+				<span class="glyphicon glyphicon-search"/>
+			</button>
+
+			<br/>
+			<br/>
+
+			<h4>Prestaciones</h4>
+			<table class="tableFont data-table table table-hover table-striped table-condensed">
+				<thead>
+					<th>Apertura</th>
+					<th>Prestación</th>
+					<th>Estado</th>
+					<th></th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="prestacion in planAsistencial.prestaciones">
+						<td class="data col-md-2">{{prestacion.fechaApertura | date:'dd MMMM yyyy'}}</td>
+						<td class="data col-md-6">{{prestacion.nombre}}</td>
+						<td class="data col-md-4">
+							<span ng-if="!prestacion.asignacionDirecta">{{prestacion.estadoCalculado}}</span>
+							
+							<div ng-show="prestacion.asignacionDirecta">
+								<button ng-hide="prestacion.fechaAsignacion"
+								        ng-click="asignarDirectamente(prestacion)">Asignación directa</button>
+								
+								<span ng-show="prestacion.fechaAsignacion">
+									asignado el {{prestacion.fechaAsignacion | date:'d/M/yyyy'}}
+								</span>
+							</div>
+							
+							<div ng-show="!prestacion.asignacionDirecta">
+								<div ng-show="!prestacion.fechaInicioTramite">
+									<button ng-click="iniciarTramite(prestacion)">Iniciar trámite</button>
+								</div>
+							</div>
+						</td>
+						<td><a ng-show="planAsistencial.fechaCierre == null"
+						       ng-click="deletePrestacion(prestacion)"><span class="glyphicon glyphicon-remove error" tooltip="Eliminar"></span></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="form-group">
+				<button ng-show="planAsistencial.fechaCierre == null"
+						class="btn btn-primary" 
+						ng-click="addPrestacion($event)">Añadir prestación</button>
+				<button class="btn" 
+						ng-click="back($event)" >Volver</button>
+
+				<button class="btn btn-primary pull-right" 
+				        ng-show="planAsistencial.fechaCierre == null"
+				        ng-click="cerrarPas(planAsistencial)">Cerrar PAS</button>
+
+			</div>
+
+
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>
+
+

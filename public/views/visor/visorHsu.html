@@ -1,0 +1,125 @@
+<div class="header2">
+	<h3>Historia Social Única</h3>
+	<hr class="topRule" />
+</div>
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-5">
+
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<img ng-src="{{usuario.photoUrl}}"><br/>
+				<a ng-click="cambiarFoto()">Cambiar foto <span class="glyphicon glyphicon-pencil"> </span></a>
+			</div>
+			<div class="col-md-8">
+				<div class="czName">{{usuario.nombre}} {{usuario.apellido1}} {{usuario.apellido2}}</div><br/>
+				<div class="czLabel">Nació el</div> {{usuario.fechaNacimiento | date:'dd MMMM yyyy' }} ({{ usuario.fechaNacimiento | edad}}) <br/>
+				<div class="czLabel">Domicilio:</div> <div class="czContent" address-display ng-model="usuario.direccion"></div><br/>
+				<div class="czLabel">Teléfono:</div>  <div class="czContent" phone-display ng-model="usuario.telefono1"></div><br/>
+				<div class="czLabel">Correo-e:</div>  <div class="czContent" email-display ng-model="usuario.email"></div><br/>
+			</div>
+		</div>
+		<div class="row text-center">
+			<button name="doc" class="czAction" ng-click="documentacion()">Documentación</button>
+			<button ng-show="usuario.familia" name="unidadFamiliar" class="czAction" ng-click="gotoUnidadFamiliar()">Unidad familiar</button>
+			<div class="" ng-hide="usuario.familia">No tiene familia asignada</div>
+		</div>
+
+		<div class="row">	
+			<error-zone ng-model="errors"></error-zone>
+		</div>
+		<br/>
+		<br/>
+
+<!-- detalle
+		<div ng-repeat="item in [usuario.hsu[0]]">
+			<div class="prestacionDate">{{item.fecha | date:'dd-MMMM'}}</div> 
+			<div class="prestacionTitle">{{item.titulo}}</div> 
+			<p class="prestacionDescrip">
+				<span ng-repeat="desc in item.descripcion">
+					{{desc}} <br/>
+				</span>
+				<span><em>{{item.estado}}</em></span> <br/>
+				<a href="#/details" ng-if="item.masInfo" class="moreInfo">+info</a>		
+			</p>
+			<p>
+				<strong>Revisiones</strong> 
+			</p>
+			<div class="rev" ng-repeat="rev in item.revisiones">
+				<div class="revFecha">{{rev.fecha | date:'dd-MM-yyyy'}}</div> 
+				<div class="revTitulo">{{rev.titulo}}.</div> 
+				<div class="revCuantia">Cuantia anterior: {{rev.cuantiaAnterior}},00 €</div> 
+			</div>
+		</div>
+-->
+
+	</div>
+	
+
+
+	<div class="col-md-5 vsu">
+
+		<dl class="vsu">
+			<div ng-repeat="item in usuario.timeline">
+				<dt>
+					<div ng-if="item.year" class="czYear">{{item.year}}</div> 
+					<div class="czDate">{{item.fecha | date:'dd-MMMM'}}</div> 
+					<div class="czTitle">{{item.titulo}}</div>
+					<a ng-show="item.masInfoUrl" href="{{item.masInfoUrl}}"  class="moreInfo">{{item.masInfoLabel}}</a>	 
+				</dt>
+				<dd>
+					<p>
+						<span ng-repeat="desc in item.descripcion">
+							{{desc}} <br/>
+						</span>
+						<span ng-show="item.estado">Estado: <span>{{item.estado}}</span></span>
+					</p>
+				</dd>
+			</div>
+		</dl>	
+
+	
+		<!--
+		<dl class="vsu">
+			<dt>
+				<div class="czYear">2013</div> 
+				<div class="czDate">12 de septiembre</div> 
+				<div class="czTitle">Realojamiento familiar</div> 
+			</dt>
+			<dd>
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est.	<a href="#/details" class="moreInfo">+info</a>		
+			</dd>
+
+			<dt>
+				<div class="czDate">21 de junio</div> 
+				<div class="czTitle">Reagrupacion familiar</div> 
+			</dt>
+			<dd>
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est.	<a href="#/details" class="moreInfo">+info</a>		
+			</dd>
+
+			<dt>
+				<div class="czYear">2012</div> 
+				<div class="czDate">1 de mayo</div> 
+				<div class="czTitle">Ayuda por dependencia</div> 
+			</dt>
+			<dd>
+				Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est. Alea iacta est.
+				Alea iacta est. Alea iacta est. <a href="#/details" class="moreInfo">+info</a>	
+			</dd>
+
+		</dl>
+		-->			
+
+	</div>
+	<div class="col-md-1"></div>
+
+	
+</div>

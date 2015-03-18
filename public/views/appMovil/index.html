@@ -1,0 +1,127 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-3">
+		<div class="">
+			<div class="mobile-frame">
+				<div id="mobile-window" class="mobile-window">
+					<img class="mobile-screen" ng-src="/images/mobile/{{image}}" ng-click="next()"/>
+				</div>
+			</div>
+		</div>		
+
+	</div>
+	<div class="col-md-8">
+		<h3>1. App Móvil para Trabajadores Sociales</h3>
+		<p>			
+			Descargue aquí la aplicación movil para Android para el trabajo de campo para Trabajadores Sociales.
+		</p>
+		<p>Esta aplicación le permite:</p>
+		<ul>
+			<li>Gestionar su agenda</li>
+			<li>Examinar el Historial Social Único de sus Usuarios</li>
+			<li>Examinar el Historial Familiar</li>
+			<li>Cumplimentar informes de habitabilidad</li>
+			<li>Tomar notas, fotos in situ y localizar y registrar direcciones.</li>
+		</ul>
+
+		<p><em>Pulse sobre el movil para ver las diferentes pantallas.</em></p>
+
+		<nav>
+		  <ul class="pagination phone-pag">
+		    <li ng-class=""><a ng-click="prev()">&lt; </a></li>
+		    <li ng-class="{active: (index % 8) == 0}"><a ng-click="setImage(0)">1 </a></li>
+		    <li ng-class="{active: (index % 8) == 1}"><a ng-click="setImage(1)">2 </a></li>
+		    <li ng-class="{active: (index % 8) == 2}"><a ng-click="setImage(2)">3 </a></li>
+		    <li ng-class="{active: (index % 8) == 3}"><a ng-click="setImage(3)">4 </a></li>
+		    <li ng-class="{active: (index % 8) == 4}"><a ng-click="setImage(4)">5 </a></li>
+		    <li ng-class="{active: (index % 8) == 5}"><a ng-click="setImage(5)">6 </a></li>
+		    <li ng-class="{active: (index % 8) == 6}"><a ng-click="setImage(6)">7 </a></li>
+		    <li ng-class="{active: (index % 8) == 7}"><a ng-click="setImage(7)">8 </a></li>
+		    <li ng-class=""><a ng-click="next()">&gt; </a></li>
+		  </ul>
+		</nav>
+
+
+		<hr/>
+		<h3>2. Catalogo Móvil para Ciudadanos</h3>
+		<p>
+		Con la siguiente aplicación movil puede acceder al catalogo de Servicios, Profesionales y Recursos.
+		Seleccione la version adecuada a su dispositivo movil e instale directamente la aplicación.		
+		</p>
+
+		<tabset>
+			<tab heading="Android">
+				<img class="mobileImg" src="/images/mobile/android.png"/>
+				<img class="bidi" src="/mobile-apps/bidi/android.png"/>
+				<p>Instale la aplicación en su teléfono o tableta <strong>Android</strong> a traves de los siguientes pasos:</p>
+				<ol>
+					<li>Necesitará autorizar la instalación de aplicaciones externas en su Android. Puede hacerlo en:
+					</li>
+						<ul>
+							<li>Para Android 4.0+: 
+								<code class="steps">Configuración &gt; Seguridad &gt;</code> Marque 
+								<code class="steps">&quot;Fuentes desconocidas&quot;</code>
+							</li>
+							<li>Para Android 4.0: 
+								<code class="steps">Configuración &gt; Aplicaciones</code> Marque
+								<code class="steps">&quot;Fuentes desconocidas&quot;</code>
+							</li>
+						</ul>
+					
+
+					<li>Ahora pinche en este <a target="_blank" href="/mobile-apps/hsu.apk">enlace</a> desde su teléfono o tableta, o bien puede emplear siguiente codigo BIDI/QR.
+					</li>
+				</ol>
+				<p>
+				Para leer codigos BIDI necesitara una aplicación lectora de codigos como la <a target="_blank" href="https://play.google.com/store/apps/details?id=com.threegvision.products.inigma.Android">siguiente.</a>
+				</p>
+
+			</tab>
+			<tab heading="iOS">
+				<img class="mobileImg" src="/images/mobile/iOS.png"/>
+				<img class="bidi" src="/mobile-apps/bidi/ios.png"/>
+				<p>Instale la aplicación en su <strong>iPhone</strong> o <strong>iPad</strong> pinchando en este <a target="_blank" href="/mobile-apps/download-ios.html">enlace</a> desde su dispositivo movil o bien puede emplear siguiente codigo BIDI/QR. 
+				</p>
+				<p>Para leer codigos BIDI necesitara una aplicación lectora de codigos como la <a target="_blank" href="https://itunes.apple.com/app/i-nigma-4-qr-datamatrix-barcode/id388923203?mt=8">siguiente.</a>
+				</p>
+								
+			</tab>
+
+			<!--
+			<tab heading="Windows Phone 8.1">
+				<img class="mobileImg" src="/images/mobile/wp8.png"/>
+				<ol>
+					<li>Instale el siguiente <a href="http://bit.ly/hsu-cert" target="_blank">certificado</a> de confianza.
+					O escanee el BIDI adjunto.<br/>
+						<img  src="/mobile-apps/bidi/cert.png"/>
+						<br/><br/><br/><br/>
+					</li>
+					<li>A continuación instale la aplicación en su telefono <strong>Windows Phone 8.1</strong> usando el <a target="_blank" href="/mobile-apps/hsu.appx">enlace</a>. 
+				O bien puede emplear siguiente código BIDI/QR.
+						<img  src="/mobile-apps/bidi/wp8.png"/>
+					</li>
+				</ol>	
+			</tab>
+			
+			<tab heading="Windows 8.1">
+				<img class="mobileImg" src="/images/mobile/blue.png"/>
+				<ol>
+					<li>Instale el siguiente <a href="http://bit.ly/hsu-cert" target="_blank">certificado</a> de confianza.
+					O escanee el siguiente código BIDI.<br/>
+						<img src="/mobile-apps/bidi/cert.png"/>
+						<br/><br/><br/><br/>
+					</li>
+					<li>Instale la aplicación en su tableta o PC con <strong>Windows 8.1</strong> pinchando en este <a target="_blank" href="/mobile-apps/App.Store_1.0.0.0_AnyCPU.appx">enlace</a> o escanee el siguiente código BIDI. <br/>
+						<img src="/mobile-apps/bidi/win81.png"/>
+					</li>
+				</ol>	
+			</tab>
+			-->
+
+
+		</tabset>
+
+
+	</div>
+	<div class="col-md-1"></div>
+</div>

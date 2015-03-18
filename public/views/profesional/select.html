@@ -1,0 +1,94 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+				</td>
+				<td class="text-center">
+					<h3><span>Selección de Profesional</span></h3>
+				</td>
+				<td class="text-right">
+				  <a class="iconBig" href ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="upperTableZone">
+			<div class="searchZone">
+				<input id="searchTextbox" type="string" data-ng-model="searchText" data-ng-change="refresh()" placeholder="criterio de selección">
+				<button class="btn btn-sm" data-ng-click="clearSearch()" data-ng-hide="searchText=='' || searchText==null">Limpiar</button>
+			</div>
+			<div class="foundZone">
+				<span data-ng-show="totalItems>0">{{totalItems}} encontrados.</span>
+				<span data-ng-show="totalItems==1">Uno encontrado.</span>
+				<span data-ng-show="totalItems==0">Sin elementos encontrados.</span>
+			</div>
+		</div>
+
+		<table id="itemList" class="data-tabe table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+				</th>				
+				<!-- <th>Codigo</th>
+				<th>TipoIndentificador</th> -->
+				<th>Identificador</th>
+				<th>Nombre</th>
+				<!-- <th>Prefijo</th>
+				<th>Nombre</th>
+				<th>Apellido1</th>
+				<th>Apellido2</th> -->
+				<th>Teléfono</th>
+
+				
+				<th>Correo-e</th>
+				<th>Tipologia</th>
+				<th>Sector</th>
+				<th>¿Público?</th>
+				<th>Acreditado</th>
+				<th>Ambito Geografico</th>
+				<th>Nivel</th>
+				<th>Perfil</th>
+				
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="profesional in dataList">
+					<td><a href ng-click="select(profesional)"><span class="glyphicon glyphicon-search" tooltip="Seleccionar"></a></td>
+					<!-- 		
+					<td class="data">{{profesional.codigo}}</td>
+					<td class="data">{{profesional.tipoIndentificador}}</td>
+					 -->
+					<td class="data">{{profesional.identificador}}</td>
+					<td class="data">{{profesional.prefijo}} {{profesional.nombre}} {{profesional.apellido1}} 
+					{{profesional.apellido2}}</td>
+					<td class="data">{{profesional.telefono}}</td>
+					<td class="data">{{profesional.email}}</td>
+					<td class="data">{{profesional.tipologia}}</td>
+					<td class="data">{{profesional.sector}}</td>
+					<td class="data">{{profesional.esPublico | checkmark}}</td>
+					<td class="data">{{profesional.acreditado | checkmark}}</td>
+					<td class="data">{{profesional.ambitoGeografico}}</td>
+					<td class="data">{{profesional.nivel}}</td>
+					<td class="data">{{profesional.perfil}}</td>
+					
+					<td><a href ng-click="select(profesional)"><span class="glyphicon glyphicon-search" tooltip="Seleccionar"></a></td>
+				</tr>
+			</tbody>
+		</table>			
+		
+		<div ng-show="dataReceived" class="text-center">
+			<div>
+				<pagination max-size="10" boundary-links="true" 
+				            total-items="totalItems" items-per-page="pageSize" data-ng-model="currentPage" 
+							data-ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+				</pagination>
+			</div>
+		</div>			
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="Loading..." />
+		</div>
+
+	</div>
+</div>

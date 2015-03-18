@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Edit miembro</h3>
+			<fieldset ng-show="dataReceived">
+				<div class="form-group">
+					<label for="inputFamiliaId">FamiliaId</label>
+					<input id="inputFamiliaId" type="number" class="form-control" placeholder="FamiliaId" ng-model="miembro.familiaId" required autofocus />
+				</div>
+				<div class="form-group">
+					<label for="inputCiudadanoId">CiudadanoId</label>
+					<input id="inputCiudadanoId" type="number" class="form-control" placeholder="CiudadanoId" ng-model="miembro.ciudadanoId" required />
+				</div>
+				<div class="form-group">
+					<label for="inputFechaAlta">FechaAlta</label>
+					<date-selector id="inputFechaAlta" 
+				          		   placeholder="FechaAlta" 
+					       		   value="miembro.fechaAlta"
+					       		   opts=" required" /> 
+				</div>
+				<div class="form-group">
+					<label for="inputParentesco">Parentesco</label>
+					<input id="inputParentesco" type="text" class="form-control" placeholder="Parentesco" ng-model="miembro.parentesco" />
+				</div>
+				<div class="form-group">
+					<label for="inputFechaBaja">FechaBaja</label>
+					<date-selector id="inputFechaBaja" 
+				          		   placeholder="FechaBaja" 
+					       		   value="miembro.fechaBaja"
+					       		   opts="" /> 
+				</div>
+				<div class="form-group">
+					<label for="inputCausaBaja">CausaBaja</label>
+					<select id="inputCausaBaja" class="form-control"
+								placeholder="Causa de baja"
+								ng-model="miembro.causaBaja" 
+							    ng-options="t.key as t.label for t in global.causasBaja">
+						</select>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="save($event)" ng-disabled="editForm.$invalid" >Save</button>
+					<button class="btn" ng-click="cancel($event)" >Cancel</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

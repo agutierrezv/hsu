@@ -1,0 +1,208 @@
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="badge badge-form-no">9/11</div>
+		<h3 class="text-center">9. Vivienda</h3>		
+
+		<div ng-include src="navigationTemplate"></div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="text-left ifield">
+					<span for="familia" class="flabel">Familia:</span>
+					<span>{{familia.nombreFamilia}} {{familia.direccion}}</span>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="text-right ifield">
+					<div for="inputFecha" class="flabel">Fecha:</div>
+					<span>{{diagnostico.version | date:'dd/MM/yyyy'}}</span> 
+				</div>
+			</div>
+		</div>
+
+		<error-zone ng-model="errors"></error-zone>
+
+		<p><strong>Instrucciones:</strong> Señale la situación o situaciones (si aplica más de una) que más se ajusta a la persona.</p>
+
+		<form>
+			<table class="form-table">
+				<thead>
+					<th class="col-md-9">Pregunta</th>
+					<th class="col-md-3">Valoración</th>						
+				</thead>
+				<tbody>
+					<tr>
+						<td class="form-question">
+							1. En usufructo, propia ó en régimen de amortización (inferior al 40% de los ingresos familiares).
+						</td>
+						<td class="form-qinput" ng-class="{'resp-ok': form.q[0]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[0]"/>
+							<span ng-show="readonly && form.q[0]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							2. En régimen de amortización (superior al 40% de los ingresos familiares).
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[1]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[1]"/>
+							<span ng-show="readonly && form.q[1]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							3. En alquiler (superior al 40% de los ingresos familiares).
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[2]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[2]"/>
+							<span ng-show="readonly && form.q[2]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							4. Cedida (sin legalizar).
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[3]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[3]"/>
+							<span ng-show="readonly && form.q[3]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							5. Pensión.							
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[4]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[4]"/>
+							<span ng-show="readonly && form.q[4]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							6. Embargo de vivienda.
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[5]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[5]"/>
+							<span ng-show="readonly && form.q[5]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							7. Propiedad de la mitad de la vivienda por separación matrimonial.
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[6]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[6]"/>
+							<span ng-show="readonly && form.q[6]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							8. Centro de acogida/alojado temporalmente en otro domicilio (carece de vivienda).
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[7]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[7]"/>
+							<span ng-show="readonly && form.q[7]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							9. Condiciones de habitabilidad:
+							<ul>
+								<li>Hacinamiento.</li>
+								<li>Alquiler compartido por dos o más familias.</li>
+								<li>Mal estado de la vivienda propia.</li>
+								<li>Deterioro en pareces, suelos o ventanas.</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[8]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[8]"/>
+							<span ng-show="readonly && form.q[8]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							10. Condiciones del equipamiento:
+							<ul>
+								<li>Carece de baño.</li>
+								<li>Carece de luz electrica.</li>
+								<li>Carece de agua caliente.</li>
+								<li>Carece de electrodomesticos básicos.</li>
+								<li>Falta de mobiliario basico.</li>
+								<li>Falta de menajería y ajuar básico.</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[9]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[9]"/>
+							<span ng-show="readonly && form.q[9]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							11. Estabilidad de la vivienda:
+							<ul>
+								<li>Cambia de vivienda cada año.</li>
+								<li>Cambia de vivienda cada 2 a 5 años.</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[10]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[10]"/>
+							<span ng-show="readonly && form.q[10]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							12. Localización de la vivienda.
+							<ul>
+								<li>Casco antiguo deteriorado.</li>
+								<li>Vivienda aislada.</li>
+								<li>Barreras (cuando sea problema para el usuario).</li>
+							</ul>
+						</td>
+						<td class="form-qinput" ng-class="{'resp-warning': form.q[11]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[11]"/>
+							<span ng-show="readonly && form.q[11]">&cross;</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="form-question">
+							13. Sin vivienda (viviendo en coches, garajes, etc.).
+						</td>
+						<td class="form-qinput" ng-class="{'problema': form.q[12]==true}">
+							<input ng-show="!readonly" type="checkbox" class="check-big" ng-model="form.q[12]"/>
+							<span ng-show="readonly && form.q[12]">&cross;</span>
+						</td>
+					</tr>
+					
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="form-summary">Valoración:</td>
+						<td class="form-qinput-summary text-center">
+							<valoracion-display ng-model="form.valoracion"/>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+
+		<div class="panel panel-default leyenda">
+			<div class="panel-heading" ng-click="showLeyend=!showLeyend">Leyenda <span class="pull-right glyphicon glyphicon-asterisk"></span></div>
+			<div class="panel-body" ng-class="{'leyend-expanded': showLeyend, 'leyend-collapsed': !showLeyend}">
+				<p>Señale la situación que mas se ajuste a la persona.</p>
+		    	<dl>
+		    		<dt class="leyenda-green"><valoracion-display ng-model="leyenda.a"/></dt>
+		    		<dd>1<sup>er</sup> indicador.</dd>
+		    		<dt class="leyenda-orange"><valoracion-display ng-model="leyenda.d"/></dt>
+		    		<dd>Señado indicador del 2<sup>o</sup> al 12<sup>o</sup>.</dd>
+		    		<dt class="leyenda-red"><valoracion-display ng-model="leyenda.md"/></dt>
+		    		<dd>13<sup>er</sup> indicador o dos o más indicadores.</dd>
+		    	</dl>
+			</div>
+		</div>
+
+		<div ng-include src="navigationTemplate"></div>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>

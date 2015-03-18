@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="changePhoto">
+			<h3 class="text-center">Cambiar foto</h3>
+			<fieldset ng-show="dataReceived" class="fieldset">
+				<div class="row">
+					<div class="col-md-5">
+						<img ng-src="{{ciudadano.fotoUrl}}"/> 
+						<img ng-src="{{uploadedPhotoBuffer}}"/>
+					</div>
+					<div class="col-md-7">
+						<div class="form-group">
+							<h4>{{ciudadano.nombre}} {{ciudadano.apellido1}} {{ciudadano.apellido2}}</h4>			
+						</div>
+
+						<br/><br/><br/>
+						<div>
+							<input id="foto" fileread="photoFile" class="btn btn-info" type="file" accept="image/*"/>
+							<br/>
+
+							<br/>
+							<button class="btn" ng-click="eliminarFoto()"><span class="glyphicon glyphicon-remove"></span> Eliminar foto actual</button>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+	
+			<div class="row">
+				<div class="form-group">
+						<button class="btn btn-primary" ng-click="cancel($event)" >Volver</button>
+					</div>
+			</div>
+
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

@@ -1,0 +1,38 @@
+<div class="header2inv">
+	<h3>Documentación de <a href="#/visor/{{model.ciudadanoId}}">{{model.name}}</a></h3>
+	<hr class="topRuleInv"/>
+</div>
+<div class="docFrame">
+	
+	<div class="row">
+		<div class="col-md-4">
+			<ul class="docList">			
+				<li ng-repeat="doc in model.documents">
+					<div class="doc" ng-class="{docSelected : doc.selected}" ng-click="selectDocument(doc)">
+						<img ng-src="{{doc.url}}">
+						<div>{{doc.name}}</div>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+		<div class="col-md-4 docView">
+			<img ng-src="{{currentDoc.url}}">
+
+			
+		</div>
+		<div class="col-md-4">
+			<h4>{{currentDoc.name}}</h4>
+			<span>Creado el {{currentDoc.date | date:'dd-MMM-yyyy' }} 
+			   <em>(hace {{ getHumanDate(currentDoc.date) }})</em>
+			</span><br/> 
+			<button class="docActionPage">&lt;</button>
+			<button class="docActionPage">&gt;</button>
+			<br/>
+			<br/>
+			<button class="docAction">Imprimir</button>
+			<button class="docAction">Enviar</button>
+		</div>
+	</div>
+
+</div>

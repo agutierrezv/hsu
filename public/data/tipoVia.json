@@ -1,0 +1,17 @@
+[{
+	id: 1,
+	code: 'Avda',
+	name: 'Avenida'
+},{
+	id: 2,
+	code: 'C/',
+	name: 'Calle'
+},{
+	id: 3,
+	code: 'P.',
+	name: 'Plaza'
+},{
+	id: 4,
+	code: 'Via',
+	name: 'Via'
+}]

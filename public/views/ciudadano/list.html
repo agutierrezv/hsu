@@ -1,0 +1,186 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+					<a class="iconBig" href ng-click="add()" ><span class="glyphicon glyphicon-plus"></span></a>
+				</td>
+				<td class="text-center">
+					<h3><span>Usuarios</span></h3>
+				</td>
+				<td class="text-right">
+				  <a class="iconBig" href ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="upperTableZone">
+			<div class="btn-group cursor-pointer" dropdown is-open="status.isopen">
+				<button type="button" class="btn btn-primary dropdown-toggle btn-sm">
+				Acciones <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a data-ng-click="importData()"><span class="glyphicon glyphicon-import"></span> Importar desde CSV o XLSX</a></li>
+					<li class="divider"></li>
+					<li><a data-ng-click="exportAsXlsx()"><span class="glyphicon glyphicon-export"></span> Exportar como XLSX</a></li>
+					<li><a data-ng-click="exportAsCsv()"><span class="glyphicon glyphicon-export"></span> Exportar como CSV</a></li>
+					<li><a data-ng-click="exportAsXml()"><span class="glyphicon glyphicon-export"></span> Exportar como XML</a></li>
+					
+					<li ng-hide="noneSelected" class="divider"></li>
+					<li ng-hide="noneSelected"><a class="error" data-ng-click="deleteSelected()"><span class="glyphicon glyphicon-remove error"></span> Eliminar selección: {{getSelectedItems().length}} elementos</a></li>
+					<li class="divider"></li>
+					<li><a class="error" data-ng-click="deleteAll()"><span class="glyphicon glyphicon-remove error"></span> Eliminar filtrados: {{totalItems}} elementos</a></li>
+				</ul>
+			</div>
+			<div class="searchZone">
+				<input id="searchTextbox" type="string" data-ng-model="searchText" data-ng-change="refresh()" placeholder="criterio de selección">
+				<button class="btn btn-sm" data-ng-click="clearSearch()" data-ng-hide="searchText=='' || searchText==null">Limpiar</button>
+			</div>
+			<div class="foundZone">
+				<span data-ng-show="totalItems>0">{{totalItems}} encontrados.</span>
+				<span data-ng-show="totalItems==1">Uno encontrado.</span>
+				<span data-ng-show="totalItems==0">Sin elementos encontrados.</span>
+			</div>
+		</div>
+
+		<table id="itemList" class="data-tabe table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+					<input type="checkbox" data-ng-model="allSelected" data-ng-click="selectAll($event)" tooltip="Select/Unselect all">
+				</th>				
+				<th>Id. Usuario</th>
+				<!-- 
+				<th>Identificador</th>
+				<th>Tipo de ident.</th>
+				-->
+				<th>Nombre</th>
+				<!-- 
+				<th>1<sup>er</sup> Apellido</th>
+				<th>2º Apellido</th>
+				-->
+				<th>Sexo</th>
+				<th>Estado civil</th>
+				<!--
+				<th>ParejaDeHecho</th>
+				-->
+				<th>Edad</th>
+				<!--
+				<th>ProvinciaNacimiento</th>
+				<th>PaisDeNacimiento</th>
+				<th>Nacionalidad</th>
+				<th>IngresosAnuales</th>
+				<th>Empadronamiento</th>
+				<th>FechaEmpadronamiento</th>
+				<th>CausaBaja</th>
+				<th>FechaBaja</th>
+				<th>Telefono1</th>
+				<th>Telefono2</th>
+				<th>Email</th>
+				<th>Discapacidad</th>
+				<th>GradoDiscapacidad</th>
+				<th>Diagnostico</th>
+				<th>ValoracionDependencia</th>
+				<th>Rae</th>
+				<th>Ocupacion</th>
+				<th>SituacionHistoriaLaboral</th>
+				<th>AnnosResidenciaCCAA</th>
+				<th>AnnosResidenciaMunicipio</th>
+				<th>NivelEstudios</th>
+				<th>TarjetaSanitaria</th>
+				<th>CoberturaSanitaria</th>
+				<th>Medico</th>
+				<th>CentroSalud</th>
+				<th>DireccionCentroSalud</th>
+				<th>TelefonoCentroSalud</th>
+				<th>HorarioConsultaCentroSalud</th>
+				<th>Observaciones</th>
+				-->
+				<th></th>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="ciudadano in dataList">
+					<td>
+						<input type="checkbox" data-ng-model="ciudadano._isSelected" data-ng-click="selectItem(ciudadano, $event)">
+					</td>			
+					<td class="data">{{ciudadano.ciudadanoId }}</td>
+					<!--
+					<td class="data">{{ciudadano.identificador}}</td>
+					<td class="data">{{ciudadano.tipoIdentificador}}</td>
+					-->
+					<td class="data">
+						<a href ng-click="visor(ciudadano)">
+						{{ciudadano.nombre}} {{ciudadano.apellido1}} {{ciudadano.apellido2}}
+						</a>
+					</td>
+					<td class="data">{{ciudadano.sexo | sexo}}</td>
+					<td class="data">{{ciudadano.estadoCivil | labelEnum:'estadosCiviles'}}</td>
+					<!--
+					<td class="data">{{ciudadano.parejaDeHecho | checkmark}}</td>
+					-->
+					<td class="data">{{ciudadano.fechaNacimiento | edad }}</td>
+					<!--
+					<td class="data">{{ciudadano.provinciaNacimiento}}</td>
+					<td class="data">{{ciudadano.paisDeNacimiento}}</td>
+					<td class="data">{{ciudadano.nacionalidad}}</td>
+					<td class="data">{{ciudadano.ingresosAnuales | number:0}}</td>
+					<td class="data">{{ciudadano.empadronamiento | checkmark}}</td>
+					<td class="data">{{ciudadano.fechaEmpadronamiento | date:'yyyy.MM.dd'}}</td>
+					<td class="data">{{ciudadano.causaBaja}}</td>
+					<td class="data">{{ciudadano.fechaBaja}}</td>
+					<td class="data">{{ciudadano.telefono1}}</td>
+					<td class="data">{{ciudadano.telefono2}}</td>
+					<td class="data">{{ciudadano.email}}</td>
+					<td class="data">{{ciudadano.discapacidad | checkmark}}</td>
+					<td class="data">{{ciudadano.gradoDiscapacidad}}</td>
+					<td class="data">{{ciudadano.diagnostico}}</td>
+					<td class="data">{{ciudadano.valoracionDependencia}}</td>
+					<td class="data">{{ciudadano.rae}}</td>
+					<td class="data">{{ciudadano.ocupacion}}</td>
+					<td class="data">{{ciudadano.situacionHistoriaLaboral}}</td>
+					<td class="data">{{ciudadano.annosResidenciaCCAA | number:0}}</td>
+					<td class="data">{{ciudadano.annosResidenciaMunicipio | number:0}}</td>
+					<td class="data">{{ciudadano.nivelEstudios}}</td>
+					<td class="data">{{ciudadano.tarjetaSanitaria | number:0}}</td>
+					<td class="data">{{ciudadano.coberturaSanitaria}}</td>
+					<td class="data">{{ciudadano.medico}}</td>
+					<td class="data">{{ciudadano.centroSalud}}</td>
+					<td class="data">{{ciudadano.direccionCentroSalud}}</td>
+					<td class="data">{{ciudadano.telefonoCentroSalud}}</td>
+					<td class="data">{{ciudadano.horarioConsultaCentroSalud |  date:'HH:mm'}}</td>
+					<td class="data">{{ciudadano.observaciones}}</td>
+					-->
+
+					<td><a href ng-click="visor(ciudadano)"><span class="glyphicon glyphicon-search" tooltip="Visor"></a></td>
+					<td><a href ng-click="edit(ciudadano)"><span class="glyphicon glyphicon-edit" tooltip="Editar"></a></td>
+					<td><a href ng-click="delete(ciudadano)"><span class="glyphicon glyphicon-remove error" tooltip="Eliminar"></a></td>
+				</tr>
+			</tbody>
+		</table>			
+		
+		<div ng-show="dataReceived" class="text-center">
+			<!--<div style="display: inline; vertical-align: middle;">
+				<label for="pageSize">Page Size: </label>
+				<select id="pageSize" data-ng-model="pageSize">
+					<option>10</option>
+					<option>20</option>
+					<option>50</option>
+					<option>100</option>
+				</select>
+			</div> -->
+			<div>
+				<pagination max-size="10" boundary-links="true" 
+				            total-items="totalItems" items-per-page="pageSize" data-ng-model="currentPage" 
+							data-ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+				</pagination>
+			</div>
+		</div>			
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="Loading..." />
+		</div>
+
+	</div>
+</div>

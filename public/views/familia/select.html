@@ -1,0 +1,86 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+				</td>
+				<td class="text-center">
+					<h3><span>Seleccion de Familia</span></h3>
+				</td>
+				<td class="text-right">
+				  <a class="iconBig" href ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="upperTableZone">
+			<div class="searchZone">
+				<input id="searchTextbox" type="string" data-ng-model="searchText" data-ng-change="refresh()" placeholder="criterio de selección">
+				<button class="btn btn-sm" data-ng-click="clearSearch()" data-ng-hide="searchText=='' || searchText==null">Limpiar</button>
+			</div>
+			<div class="foundZone">
+				<span data-ng-show="totalItems>0">{{totalItems}} encontrados.</span>
+				<span data-ng-show="totalItems==1">Uno encontrado.</span>
+				<span data-ng-show="totalItems==0">Sin elementos encontrados.</span>
+			</div>
+		</div>
+
+		<table id="itemList" class="data-tabe table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+				</th>				
+				<th>Código</th>
+				<th>Código de callejero</th>
+				<th>Domicilio</th>
+				<th>Código Postal</th>
+				<th>Localidad (Municipio)</th>
+				<th>Provincia</th>
+				<th>Teléfono</th>
+				
+			</thead>
+			<tbody>
+				<tr ng-repeat="familia in dataList">
+					<td><a href ng-click="select(familia)"><span class="glyphicon glyphicon-search" tooltip="Seleccionar"></a></td>
+					<td class="data col-md-1">
+						<a href ng-click="select(familia)">{{familia.codigo}}</a>
+					</td>
+					<td class="data col-md-2">{{familia.codigoCallejero}}</td>
+					<td class="data col-md-4">
+						{{familia.nombreFamilia }} -
+						{{familia.tipoVia | labelEnum:'tipoVias' }} 
+						{{formatDireccion(familia) }}
+					</td>
+					<td class="data col-md-1">{{familia.codigoPostal}}</td>
+					<td class="data col-md-2">{{familia.localidadIne}} ({{familia.municipioIne}}) </td>
+					<td class="data col-md-1">{{familia.provinciaIne | labelEnum:'provincias' }}</td>
+					<td class="data col-md-1">{{familia.telefono}}</td>
+					
+				</tr>
+			</tbody>
+		</table>			
+		
+		<div ng-show="dataReceived" class="text-center">
+			<!--<div style="display: inline; vertical-align: middle;">
+				<label for="pageSize">Page Size: </label>
+				<select id="pageSize" data-ng-model="pageSize">
+					<option>10</option>
+					<option>20</option>
+					<option>50</option>
+					<option>100</option>
+				</select>
+			</div> -->
+			<div>
+				<pagination max-size="10" boundary-links="true" 
+				            total-items="totalItems" items-per-page="pageSize" data-ng-model="currentPage" 
+							data-ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+				</pagination>
+			</div>
+		</div>			
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="Loading..." />
+		</div>
+
+	</div>
+</div>

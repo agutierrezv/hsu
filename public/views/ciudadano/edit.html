@@ -1,0 +1,321 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<form class="form-inline text-left" name="editForm">
+			<h3 class="text-center">Editar usuario</h3>
+			<fieldset class="fieldset" ng-show="dataReceived">
+				
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="inputCiudadanoId" class="label1">Código</label>
+						<input id="inputCiudadanoId" type="number" class="form-control" placeholder="código de ciudadano" ng-model="ciudadano.ciudadanoId" required autofocus />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputTipoIdentificador" class="label1">Tipo Identificador</label>
+						<select id="inputTipoIdentificador" class="form-control"
+								placeholder="Tipo de identificador"
+								ng-model="ciudadano.tipoIdentificador" 
+							    ng-options="t.key as t.label for t in global.tipoIdentificadores"
+							    ng-change="checkUniqueId()"
+							    required>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputIdentificador" class="label1">Identificador</label>
+						<input id="inputIdentificador" 
+							   type="text" 
+							   class="form-control width=8em" 
+							   placeholder="Identificador" 
+							   ng-model="ciudadano.identificador" 
+							   required 
+							   ng-blur="checkUniqueId()"
+							   />
+					</div>
+				</div>
+
+				<div class ="row">
+					<error-zone ng-model="errors"></error-zone>
+				</div>
+
+				<div class ="row">
+					<div class="form-group col-md-4">
+						<label for="inputNombre" class="label1">Nombre</label>
+						<input id="inputNombre" type="text" class="form-control" placeholder="Nombre" ng-model="ciudadano.nombre" required />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputApellido1" class="label1">1º Apellido</label>
+						<input id="inputApellido1" type="text" class="form-control" placeholder="Primer apellido" ng-model="ciudadano.apellido1" required />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputApellido2" class="label1">2º Apellido</label>
+						<input id="inputApellido2" type="text" class="form-control" placeholder="Segundo apellido" ng-model="ciudadano.apellido2" />
+					</div>
+				
+					<div class="form-group col-md-4">
+						<label for="inputSexo" class="label1">Sexo</label>
+						<select id="inputSexo" class="form-control"
+								placeholder="Sexo"
+								ng-model="ciudadano.sexo" 
+							    ng-options="t.key as t.label for t in global.sexo"
+							    required>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputEstadoCivil" class="label1">Estado civil</label>
+						<select id="inputEstadoCivil" class="form-control"
+								placeholder="Estado civil"
+								ng-model="ciudadano.estadoCivil" 
+							    ng-options="t.key as t.label for t in global.estadosCiviles"
+							    required>
+						</select>
+					</div>
+					<div class="checkbox col-md-4">
+						<label for="inputParejaDeHecho" class="label1">
+							<input id="inputParejaDeHecho" type="checkbox" ng-model="ciudadano.parejaDeHecho" />
+							Pareja de hecho
+						</label>
+					</div>
+				</div>
+
+				<div class ="row">
+					<div class="form-group col-md-4">
+						<label for="inputTelefono1" class="label1">Tlf. Principal</label>
+						<input id="inputTelefono1" type="text" class="form-control" placeholder="Teléfono" ng-model="ciudadano.telefono1" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputTelefono2" class="label1">Tlf. Secundario</label>
+						<input id="inputTelefono2" type="text" class="form-control" placeholder="Teléfono" ng-model="ciudadano.telefono2" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputEmail" class="label1">Email</label>
+						<input id="inputEmail" type="text" class="form-control" placeholder="Email" ng-model="ciudadano.email"  />
+					</div>
+				</div>
+
+				<div class ="row">
+					<div class="form-group col-md-4">
+						<label for="inputFechaNacimiento" class="label1">Fecha nacimiento</label>
+						<date-selector id="inputFechaNacimiento" class="width-date"
+					          		   placeholder="Fecha" 
+						       		   value="ciudadano.fechaNacimiento"
+						       		   required /> 
+					</div>
+					<div class="form-group col-md-8">
+						<label for="inputProvinciaNacimiento" class="label1">Provincia</label>
+						<select id="inputProvinciaNacimiento" class="form-control width-select"
+								placeholder="Provincia de nacimiento"
+								ng-model="ciudadano.provinciaNacimiento" 
+							    ng-options="t.key as t.label for t in global.provincias"
+							    required>
+						</select>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="inputPaisDeNacimiento" class="label1">País</label>
+						<select id="inputPaisDeNacimiento" class="form-control width-select"
+								placeholder="País de nacimiento"
+								ng-model="ciudadano.paisDeNacimiento" 
+							    ng-options="t.key as t.label for t in global.paises"
+							    required>
+						</select>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputNacionalidad" class="label1">Nacionalidad</label>
+						<select id="inputNacionalidad" class="form-control width-select"
+								placeholder="Nacionalidad"
+								ng-model="ciudadano.nacionalidad" 
+							    ng-options="t.key as t.label for t in global.paises"
+							    required>
+						</select>
+					</div>
+				</div>
+
+				<hr/>
+				
+				<div class ="row">
+					<div class="form-group col-md-8">
+						<label for="inputNivelEstudios" class="label1">Nivel de estudios</label>
+						<select id="inputNivelEstudios" class="form-control width-select"
+								placeholder="Nivel de estudios"
+								ng-model="ciudadano.nivelEstudios" 
+							    ng-options="t.key as t.label for t in global.nivelesEstudios"
+							    required>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputIngresosAnuales" class="label1">Ingresos anuales</label>
+						<input id="inputIngresosAnuales" type="number" class="form-control" placeholder="Ingresos anuales" ng-model="ciudadano.ingresosAnuales" required />
+					</div>
+
+					<div class="form-group col-md-8">
+						<label for="inputOcupacion" class="label1">Ocupación</label>
+						<select id="inputOcupacion" class="form-control width-select"
+								placeholder="Ocupación"
+								ng-model="ciudadano.ocupacion" 
+							    ng-options="t.key as t.label for t in global.ocupaciones"
+							    required>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputTarjetaSanitaria" class="label1">Tarjeta Sanitaria</label>
+						<input id="inputTarjetaSanitaria" type="number" class="form-control" placeholder="Tarjeta sanitaria" ng-model="ciudadano.tarjetaSanitaria" required />
+					</div>
+				
+					<div class="form-group col-md-4">
+						<label for="inputCoberturaSanitaria" class="label1">Cobertura Sanitaria</label>
+						<select id="inputCoberturaSanitaria" class="form-control width-select"
+								placeholder="Cobertura sanitaria"
+								ng-model="ciudadano.coberturaSanitaria" 
+							    ng-options="t.key as t.label for t in global.coberturasSanitarias"
+							    required>
+						</select>
+					</div>
+
+					<div class="checkbox col-me-4 ">
+						<label for="inputEmpadronamiento" class="label1">
+							<input id="inputEmpadronamiento" type="checkbox" ng-model="ciudadano.empadronamiento" />
+							Empadronamiento
+						</label>
+					</div>					
+	
+				
+					<div class="form-group col-md-4">
+						<label for="inputFechaEmpadronamiento" class="label1">Fecha de empadronamiento</label>
+						<date-selector id="inputFechaEmpadronamiento" class="width-date"
+					          		   placeholder="Fecha" 
+						       		   value="ciudadano.fechaEmpadronamiento"/> 
+					</div>
+				</div>	
+
+				<div class ="row">
+					<div class="form-group col-md-4">
+						<label for="inputAnnosResidenciaCCAA" class="label1">Años de Residencia en CC.AA.</label>
+						<input id="inputAnnosResidenciaCCAA" type="number" class="form-control" placeholder="Años de Residencia en CCAA" ng-model="ciudadano.annosResidenciaCCAA" required />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputAnnosResidenciaMunicipio" class="label1">Años de Residencia en Municipio</label>
+						<input id="inputAnnosResidenciaMunicipio" type="number" class="form-control" placeholder="Años de Residencia en Municipio" ng-model="ciudadano.annosResidenciaMunicipio" required />
+					</div>
+				</div>
+
+				<hr/>
+
+				<div class ="row">						
+					<div class="form-group col-md-4">
+						<label for="inputSituacionHistoriaLaboral" class="label1">Situacion Historia Laboral</label>
+						<input id="inputSituacionHistoriaLaboral" type="text" class="form-control" placeholder="Situación Historia Laboral" ng-model="ciudadano.situacionHistoriaLaboral"/>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputDiagnostico" class="label1">Diagnostico</label>
+						<input id="inputDiagnostico" type="text" class="form-control" placeholder="Diagnóstico" ng-model="ciudadano.diagnostico"  />
+					</div>
+				</div>
+
+				<div class ="row">
+					<div class="checkbox col-md-4">
+						<label for="inputDiscapacidad" class="label1" >
+							<input id="inputDiscapacidad" type="checkbox" ng-model="ciudadano.discapacidad" />
+							Discapacidad
+						</label>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputGradoDiscapacidad" class="label1">Grado de discapacidad</label>
+						<input id="inputGradoDiscapacidad" type="text" class="form-control" placeholder="Grado de discapacidad" ng-model="ciudadano.gradoDiscapacidad"/>
+					</div>		
+
+				</div>
+
+				<div class ="row">	
+					<div class="form-group col-md-8">
+						<label for="inputValoracionDependencia" class="label1">Valoracion Dependencia</label>
+						<select id="inputValoracionDependencia" class="form-control width-select"
+								placeholder="Valoración de dependencia"
+								ng-model="ciudadano.valoracionDependencia" 
+							    ng-options="t.key as t.label for t in global.valoracionesDependencia">
+						</select>		
+					</div>	
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-10">
+						<label for="inputRae" class="label1">RAE</label>
+						<select id="inputRae" class="form-control width-select"
+								placeholder="RAE"
+								ng-model="ciudadano.rae" 
+							    ng-options="t.key as t.label for t in global.rae"
+							    required>
+						</select>
+					</div>
+				</div>	
+
+				<div class ="row">
+					<div class="form-group col-md-4">
+						<label for="inputCausaBaja" class="label1">Causa de baja</label>
+						<select id="inputCausaBaja" class="form-control width-select"
+								placeholder="Causa de baja"
+								ng-model="ciudadano.causaBaja" 
+							    ng-options="t.key as t.label for t in global.causasBaja">
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputFechaBaja" class="label1">Fecha de baja</label>
+						<date-selector id="inputFechaBaja" class="width-date"
+					          		   placeholder="Fecha" 
+						       		   value="ciudadano.fechaBaja"/> 
+					</div>
+				</div>
+
+				<hr/>
+
+				<div class ="row">
+					<div class="form-group col-md-4">
+						<label for="inputCentroSalud" class="label1">Centro de Salud</label>
+						<input id="inputCentroSalud" type="text" class="form-control" placeholder="Centro de Salud" ng-model="ciudadano.centroSalud"  />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputDireccionCentroSalud" class="label1">Dirección</label>
+						<input id="inputDireccionCentroSalud" type="text" class="form-control" placeholder="Dirección del Centro de Salud" ng-model="ciudadano.direccionCentroSalud"  />
+					</div>
+				</div>
+				
+				<div class ="row">	
+					<div class="form-group col-md-4">
+						<label for="inputMedico" class="label1">Médico</label>
+						<input id="inputMedico" type="text" class="form-control" placeholder="Médico" ng-model="ciudadano.medico" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputTelefonoCentroSalud" class="label1">Teléfono</label>
+						<input id="inputTelefonoCentroSalud" type="text" class="form-control" placeholder="Teléfono del Centro de Salud" ng-model="ciudadano.telefonoCentroSalud"  />
+					</div>
+				</div>
+
+				<div class ="row">
+					<div class="form-group col-md-2">
+						<label for="inputHorarioConsultaCentroSalud" class="label1">Horario Consulta</label>
+						<time-selector id="inputHorarioConsultaCentroSalud" class="timepicker"
+						               value="ciudadano.horarioConsultaCentroSalud"
+						               opts=" required" />
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputObservaciones" class="label1">Observaciones</label>
+						<input id="inputObservaciones" type="text" class="form-control width-inputText-long" placeholder="Observaciones" ng-model="ciudadano.observaciones"  />
+					</div>
+				</div>
+
+				<div class ="row">
+					<error-zone ng-model="errorsOnSave"></error-zone>
+				</div>
+
+				<div class ="row">
+					<div class="form-group">
+						<button class="btn btn-primary" ng-click="save($event)" ng-disabled="editForm.$invalid" >Guardar</button>
+						<button class="btn" ng-click="cancel($event)" >Cancelar</button>
+					</div>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-1"></div>
+</div>

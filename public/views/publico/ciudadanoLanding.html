@@ -1,0 +1,192 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<h3>Atención al ciudadano</h3>
+		<p>Desde esta página Usted podrá autoevaluarse para determinar su idoneidad o la de su familia en los diferentes programas y ayudas disponibles.</p>
+		<br/>
+		
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="autoeval">
+					<div class="glyphicon glyphicon-file form-icon"></div>
+
+					<div ng-show="errores.length > 0" >
+						<ul class="errorBox">
+							<li ng-repeat="error in errores">
+								{{error.msg}}
+							</li>
+						</ul>
+					</div>
+
+					<h3>1. Formulario de autoevaluación</h3>
+					<p>Por favor, cumplimente el siguiente formulario y a continuación pulse el boton <strong>Comprobar</strong>.</p>
+					<fieldset>
+						<div class="form-group">
+							<label for="nombre" class="autoeval">Nombre y apellidos: </label>
+							<input id="nombre" type="text" class="" placeholder="nombre" ng-model="data.nombre" autofocus/>
+							<input id="apellido1" type="text" class="" placeholder="1er apellido" ng-model="data.apellido1" autofocus/>
+							<input id="apellido2" type="text" class="" placeholder="2º apellido" ng-model="data.apellido2" autofocus/>
+						</div>
+						
+						<div class="form-group">
+							<label for="numPersonas" class="autoeval">Nº total de personas que conviven en el hogar:</label>
+							<input id="numPersonas" type="number" class="formNumber" placeholder="1" ng-model="data.numPersonas" ng-change="changeNumPersonas(data.numPersonas)" select-on-click autofocus/>
+
+							<span class="hsep"/>
+							<label for="ingresoBruto" class="autoeval">Ingreso bruto del hogar anual:</label>
+							<input id="ingresoBruto" type="number" class="formMoney" placeholder="0" 
+								   ng-model="data.ingresoBruto" autofocus 
+								   ng-class="{errorField : (errores.length > 0)}"
+								   ng-click="changeIngreso()"/> <span class=""> euros.</span>
+						</div>
+
+						<div class="form-group">
+							<label for="persona1" class="autoeval">Miembros de la unidad familiar:</label>
+							<div class="form-group personaBlock" ng-repeat="persona in data.personas"
+								 ng-class-even="'persona-par'">
+								<label for="persona{{$index}}" class="autoeval">{{$index + 1}}. </label>
+								<input  id="persona{{$index}}Edad" type="number" class="formNumber" placeholder="edad" 
+								        ng-model="persona.edad" ng-change="changeEdad(persona)" autofocus
+										ng-class="{errorField : persona.hasError}"
+								/>
+								<span> años.</span>
+								
+								<div class="input-group-inline">
+									<input  id="persona{{$index}}Discapacitado" type="checkbox" class="formCheck" ng-model="persona.esDiscapacitado" autofocus/>
+									<label for="persona{{$index}}Discapacitado">Discapacidad</label>
+								</div>
+								<div class="input-group-inline">
+									<input  id="persona{{$index}}Embarazada" type="checkbox" class="formCheck" ng-model="persona.estaEmbarazada" autofocus/>
+									<label for="persona{{$index}}Embarazada">Embarazada</label>
+								</div>
+								<div class="input-group-inline">
+									<input  id="persona{{$index}}Dependiente" type="checkbox" class="formCheck" ng-model="persona.esDependiente" autofocus/>
+									<label for="persona{{$index}}Dependiente">Dependencia</label>
+								</div>
+
+								<span class="estadoLegal"> {{getTipoPorEdad(persona)}} </span>
+
+								<div class="input-group-inline">
+									<input ng-show="enRangoDeEmancipacion(persona.edad)" id="persona{{$index}}Emancipado" type="checkbox" class="formCheck" ng-model="persona.estaEmancipado" autofocus/>
+									<label for="persona{{$index}}Emancipado" ng-show="enRangoDeEmancipacion(persona.edad)">Emancipado</label>
+								</div>
+								<div class="input-group-inline">
+									<input ng-show="puedeCuidar(persona)" id="persona{{$index}}Cuidador" type="checkbox" class="formCheck" ng-model="persona.esCuidador" autofocus/>
+									<label for="persona{{$index}}Cuidador" ng-show="puedeCuidar(persona)">Cuidador</label>
+								</div>
+
+								<div class="input-group-inline">
+									<input ng-show="puedeTrabajar(persona)" id="persona{{$index}}Desempleado" type="checkbox" class="formCheck" ng-model="persona.esDesempleado" autofocus/>
+									<label for="persona{{$index}}Desempleado" ng-show="puedeTrabajar(persona)">Desempleado</label>
+								</div>
+
+							</div>
+						</div>
+
+					</fieldset>
+
+					<br/>
+
+					<button ng-click="comprobar()">Comprobar</button>
+				</form>
+
+			</div>
+		</div>
+
+		<div class="row" ng-show="canShowPrestaciones()" ng-cloak>
+			<div class="col-md-12">
+				<h3>2. Prestaciones aplicables</h3>
+				<p>Atendiendo a la información que ha facilitado en el formulario previo, se han encontrado <strong>{{prestaciones.length}} prestaciones</strong> que podrían ser compatibles para Usted y su famila siempre y cuando cumpla los criterios de idoneidad especificos paracada una de ellas. Las prestaciones se detallan a continuación. A la derecha puede ver un detalle de cada una de ellas.</p>
+			</div>
+		</div>
+		<div class="row" ng-show="canShowPrestaciones()" ng-cloak>
+			<div class="col-md-7">
+				<div class="btn-group-vertical" role="group">
+					<div id="prestacionbtn{{prestacionId}}"
+							type="button" 
+					        class="btn btn-default prestacion-title" 
+					        ng-repeat="prestacion in prestaciones"
+					        ng-click="setCurrentPrestacion(prestacion)">
+					      
+					        {{prestacion.nombre}}
+					        <div class="btn selectBtn" data-toggle="button" ng-click="selectPrestacion(prestacion)">
+					        	<span ng-show="prestacion.selected">Seleccionado</span>
+					        	<span ng-show="!prestacion.selected">Seleccionar</span>
+					        </div>
+					 </div>
+				</div>
+				<br/>
+				<br/>
+
+			</div>
+			<div class="col-md-5 prestacionDetalle" ng-show="currentPrestacion != null">
+				<div class="glyphicon glyphicon-info-sign prestacion-icon"></div>
+				<h4>{{currentPrestacion.nombre}}</h4>
+				<strong class="prestacion">Descripción:</strong><br/>
+				<p>{{currentPrestacion.descripcion}}</p>
+
+				<strong class="prestacion">Criterios de aplicabilidad:</strong><br/>
+				<p>No disponible.</p>
+
+				<strong class="prestacion">Documentación adiciona a aportar para tramitación:</strong><br/>
+				<p>No aplicable.</p>
+
+				<strong class="prestacion">Inicio de tramitación:</strong><br/>
+				<p>
+					<ul>
+						<li>Por internet o</li> 
+						<li>presencial en la Calle A...</li>
+					</ul>
+				</p>
+
+				<p><a target="_blank" href="http://www.bilbao.net/cs/Satellite?c=Page&cid=3000005415&language=es&pagename=Bilbaonet%2FPage%2FBIO_home">Mas +info</a></p>
+			</div>
+		</div>
+		<div class="row" ng-show="canShowPrestaciones()" ng-cloak>
+			<div class="col-md-12">
+				<h3>3. Concertar cita</h3>
+				<p>Si desea concertar una cita con un Trabajador Social para iniciar los tramites introduzca sus datos y su direccion para facilitarle el mas cercano a su domicilio. Finalmente pulse el botón: <strong>Concertar Cita</strong>.</p>
+
+				<p ng-show="prestacionesSelecionadas == 0"><em>No ha seleccionado ninguna prestación.</em><p>
+				<p ng-show="prestacionesSelecionadas == 1"><em>Ha seleccionado una prestación.</em><p>
+				<p ng-show="prestacionesSelecionadas > 1"><em>Ha seleccionado {{prestacionesSelecionadas}} prestaciones.</em><p>
+
+				<p>
+					<div class="input-group-inline">
+						<label for="tipoDoc">Tipo de documento: </label>
+						<select id="tipoDoc" ng-model="data.tipoDoc" required>
+							<option>DNI</option>
+							<option>NIE</option>
+							<option>Nº de Pasaporte</option>
+						</select>
+					</div>
+					<div class="input-group-inline">
+						<label for="numDoc">Nº de documento: </label>
+						<input id="numDoc" type="text" ng-model="data.numDoc" required/>
+					</div>
+				</p>
+				<p>
+					<div class="input-group-inline">
+						<label for="direccion">Dirección: </label>
+						<input id="direccion" type="text" placeholder="calle, numero, población" ng-model="data.direccion"/>
+						<span><em>Indique su dirección para facilitarle una cita en una ubicación lo más cercana a su domicilio.</em></span>
+					</div>
+				</p>
+				<br/>
+				<div ng-show="errores2.length > 0" >
+					<ul class="errorBox">
+						<li ng-repeat="error in errores2">
+							{{error.msg}}
+						</li>
+					</ul>
+				</div>
+
+
+				<button class="concertarBtn" ng-click="concertarCita()">Concertar Cita</button>			
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-1"></div>
+</div>
