@@ -6,7 +6,7 @@ function getConfiguration(environment)
 	if (environment === 'production') {
 		configuration = {
 			environment: 				'production',
-			hostUrl: 					'https://hsu-api.herokuapp.com', 					
+			hostUrl: 					'https://hsu.herokuapp.com', 					
 			queue: {
 				IRON_MQ_PROJECT_ID: 	'54f851267af4ab0009000055',
 				IRON_MQ_TOKEN: 			'fmtXe9gTevB0zDk4LWiEIIxy6H8'
