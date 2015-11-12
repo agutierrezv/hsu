@@ -12,8 +12,7 @@ function getConfiguration(environment)
 				IRON_MQ_TOKEN: 			'fmtXe9gTevB0zDk4LWiEIIxy6H8'
 	 		},
 	 		redis: {
-	 			//REDISCLOUD_URL: 		'redis://rediscloud:FGVmBwfw8aeLhwjN@pub-redis-16696.us-east-1-4.1.ec2.garantiadata.com:16696'
-	 			REDISCLOUD_URL: 		null
+	 			REDISCLOUD_URL: 		'redis://rediscloud:IsbbjWjn3Py1gAkF@pub-redis-16434.eu-west-1-1.2.ec2.garantiadata.com:16434'
 	 		}
 		};
 	}
