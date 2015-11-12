@@ -8,11 +8,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : ['hsu-api'],
+  app_name : ['hsu'],
   /**
    * Your New Relic license key.
    */
-  license_key : process.env.NEW_RELIC_LICENSE_KEY || '04ec8cf29d2ed10795603a654453a7cbaaa0e188',
+  license_key : process.env.NEW_RELIC_LICENSE_KEY || '73a23b4a5a1634fe26df95fd1654491dab23be16',
   logging : {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
