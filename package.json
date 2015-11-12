@@ -39,7 +39,7 @@
     "iron_mq": "^0.2.3",
     "jshint": "^2.5.10",
     "jshint-teamcity": "^1.0.6",
-    "mongoose": "^3.8.24",
+    "mongoose": "^4.1.19",
     "morgan": "^1.2.3",
     "newrelic": "^1.15.1",
     "q": "^1.0.1",
