@@ -2,7 +2,7 @@ angular.module('myApp').service('UrlService', ['baseUrl', 'documentationUrl', '$
 	
 	var UrlService = {};	
 
-	$http.defaults.headers.common.apikey = 'AyHsu01'; //force access to meta-data
+	$http.defaults.headers.common.apikey = 'hsu01'; //force access to meta-data
 	var apiDoc = $http.get(baseUrl + documentationUrl);
 
 	var getApi = function (apiDocumentation, resource) {
