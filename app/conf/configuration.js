@@ -6,13 +6,13 @@ function getConfiguration(environment)
 	if (environment === 'production') {
 		configuration = {
 			environment: 				'production',
-			hostUrl: 					'https://hsu.herokuapp.com', 					
+			hostUrl: 					'https://hsu-api.herokuapp.com', 					
 			queue: {
-				IRON_MQ_PROJECT_ID: 	'55099f33c3d0ef0009000092',
-				IRON_MQ_TOKEN: 			'K8eTieqkWOr5r02CbXLqx0Vrkzs'
+				IRON_MQ_PROJECT_ID: 	'54f851267af4ab0009000055',
+				IRON_MQ_TOKEN: 			'fmtXe9gTevB0zDk4LWiEIIxy6H8'
 	 		},
 	 		redis: {
-	 			REDISCLOUD_URL: 		'redis://rediscloud:IsbbjWjn3Py1gAkF@pub-redis-16434.eu-west-1-1.2.ec2.garantiadata.com:16434'
+	 			REDISCLOUD_URL: 		'redis://rediscloud:FGVmBwfw8aeLhwjN@pub-redis-16696.us-east-1-4.1.ec2.garantiadata.com:16696'
 	 		}
 		};
 	}
@@ -34,8 +34,8 @@ function getConfiguration(environment)
 			environment: 				'devel',
 			hostUrl: 					'http://localhost:5000', 					
 			queue: {
-				IRON_MQ_PROJECT_ID: 	'55099f33c3d0ef0009000092',
-				IRON_MQ_TOKEN: 			'K8eTieqkWOr5r02CbXLqx0Vrkzs'
+				IRON_MQ_PROJECT_ID: 	'54f851267af4ab0009000055',
+				IRON_MQ_TOKEN: 			'fmtXe9gTevB0zDk4LWiEIIxy6H8'
 	 		},
 	 		redis: {
 	 			REDISCLOUD_URL: 		null
