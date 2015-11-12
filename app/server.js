@@ -72,7 +72,7 @@ var dbCnx = resolveMongoDbCnx();
 mongoose.connect(dbCnx);
 
 function resolveMongoDbCnx() {
-//    var localDevelDatabase = 'mongodb://localhost:27017/hsu';
+    var localDevelDatabase = 'mongodb://localhost:27017/hsu';
     if (process.env.VCAP_SERVICES) {
         var vCap = JSON.parse(process.env.VCAP_SERVICES);
 
@@ -83,8 +83,7 @@ function resolveMongoDbCnx() {
             return vCap['mongodb-2.4'][0].credentials.url || localDevelDatabase;
         }
     }
-    //return process.env.MONGOLAB_URI || localDevelDatabase;
-    return process.env.MONGOLAB_URI;
+    return process.env.MONGOLAB_URI || localDevelDatabase;
 }
 
 require('./services/baucis-csv.js').apply(baucis);
