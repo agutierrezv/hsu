@@ -73,7 +73,7 @@ mongoose.connect(dbCnx);
 
 function resolveMongoDbCnx() {
 //    var localDevelDatabase = 'mongodb://localhost:27017/hsu';
-    var localDevelDatabase = 'mongodb://hsu:hsu@ds039251.mongolab.com:39251/heroku_app34785710';
+    var localDevelDatabase = 'mongodb://heroku_app34785710:65i514rkvk85i0mvtsacg29iue@ds039251.mongolab.com:39251/heroku_app34785710';
     if (process.env.VCAP_SERVICES) {
         var vCap = JSON.parse(process.env.VCAP_SERVICES);
 
